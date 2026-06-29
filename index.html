@@ -350,6 +350,79 @@
         );
         z-index: -1;
       }
+      .hero .wrap {
+        position: relative;
+        z-index: 1;
+      }
+      /* Hero background effect: drifting gold blobs + dot grid */
+      .hero-fx {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .hero-fx .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.55;
+        will-change: transform;
+      }
+      .hero-fx .b1 {
+        width: 460px;
+        height: 460px;
+        top: -6%;
+        left: 12%;
+        background: radial-gradient(circle, rgba(212, 168, 83, 0.5), transparent 70%);
+        animation: drift1 16s ease-in-out infinite;
+      }
+      .hero-fx .b2 {
+        width: 380px;
+        height: 380px;
+        top: 8%;
+        right: 10%;
+        background: radial-gradient(circle, rgba(232, 201, 122, 0.55), transparent 70%);
+        animation: drift2 19s ease-in-out infinite;
+      }
+      .hero-fx .b3 {
+        width: 320px;
+        height: 320px;
+        bottom: -4%;
+        left: 42%;
+        background: radial-gradient(circle, rgba(201, 154, 64, 0.4), transparent 70%);
+        animation: drift3 22s ease-in-out infinite;
+      }
+      .hero-fx .grid-dots {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          rgba(26, 26, 26, 0.06) 1px,
+          transparent 1px
+        );
+        background-size: 26px 26px;
+        -webkit-mask-image: radial-gradient(
+          circle at 50% 38%,
+          #000,
+          transparent 72%
+        );
+        mask-image: radial-gradient(circle at 50% 38%, #000, transparent 72%);
+      }
+      @keyframes drift1 {
+        50% {
+          transform: translate(40px, 30px) scale(1.12);
+        }
+      }
+      @keyframes drift2 {
+        50% {
+          transform: translate(-36px, 26px) scale(1.1);
+        }
+      }
+      @keyframes drift3 {
+        50% {
+          transform: translate(24px, -30px) scale(1.14);
+        }
+      }
       .pill {
         display: inline-flex;
         align-items: center;
@@ -791,17 +864,37 @@
       /* Team — image-led cards */
       .team-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 22px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        max-width: 980px;
+        margin: 0 auto;
       }
       .team-card {
         position: relative;
-        border-radius: 22px;
+        border-radius: 18px;
         overflow: hidden;
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 1 / 1;
         background: var(--soft-2);
         transition: transform 0.35s var(--ease-out),
           box-shadow 0.35s var(--ease-out);
+      }
+      .team-card.director {
+        outline: 3px solid var(--accent);
+        outline-offset: -3px;
+      }
+      .team-card .badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 3;
+        background: var(--accent);
+        color: #1a1a1a;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        padding: 5px 9px;
+        border-radius: 999px;
       }
       .team-card:hover {
         transform: translateY(-4px);
@@ -834,18 +927,19 @@
         left: 0;
         right: 0;
         bottom: 0;
-        padding: 22px 24px;
+        padding: 14px 16px;
         z-index: 2;
         color: #fff;
       }
       .team-meta h3 {
         color: #fff;
-        font-size: 1.4rem;
-        margin-bottom: 2px;
+        font-size: 1.05rem;
+        margin-bottom: 1px;
       }
       .team-meta p {
         color: rgba(255, 255, 255, 0.85);
-        font-size: 0.98rem;
+        font-size: 0.78rem;
+        line-height: 1.3;
       }
 
       /* Bento (side-by-side blocks) */
@@ -961,7 +1055,11 @@
         display: grid;
         grid-template-columns: 0.9fr 1.1fr;
         gap: 48px;
-        align-items: center;
+        align-items: start;
+      }
+      .reserva-pitch {
+        position: sticky;
+        top: 110px;
       }
       .reserva-pitch h2 {
         font-size: clamp(1.9rem, 4vw, 3rem);
@@ -971,20 +1069,23 @@
       .shine-text {
         background: linear-gradient(
           100deg,
-          var(--ink) 30%,
+          var(--ink) 0%,
+          var(--ink) 38%,
           var(--accent) 50%,
-          var(--ink) 70%
+          var(--ink) 62%,
+          var(--ink) 100%
         );
-        background-size: 220% 100%;
+        background-size: 320px 100%;
+        background-repeat: repeat;
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
         color: transparent;
-        animation: textshine 5s linear infinite;
+        animation: textshine 3.2s linear infinite;
       }
       @keyframes textshine {
         to {
-          background-position: 220% 0;
+          background-position: 320px 0;
         }
       }
       /* Crossfade pitch text on mode switch */
@@ -996,8 +1097,7 @@
       .pitch-swap #formTitle,
       .pitch-swap #formSubtitle {
         opacity: 0;
-        transform: translateY(10px);
-        filter: blur(2px);
+        filter: blur(3px);
       }
       .reserva-pitch p {
         color: var(--muted);
@@ -1410,6 +1510,9 @@
         .shine-text {
           animation: none;
         }
+        .hero-fx .blob {
+          animation: none;
+        }
       }
     </style>
   </head>
@@ -1455,6 +1558,12 @@
 
     <!-- HERO -->
     <section class="hero">
+      <div class="hero-fx" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+        <span class="blob b3"></span>
+        <span class="grid-dots"></span>
+      </div>
       <div class="wrap">
         <span class="pill reveal"><i class="dot"></i>Curso 2026–2027 · Plazas abiertas</span>
         <h1 class="reveal">
@@ -1477,28 +1586,6 @@
         </div>
       </div>
 
-      <!-- Marquee -->
-      <div class="marquee reveal" aria-hidden="true">
-        <div class="marquee-track">
-          <img src="images/team/lara.jpg" alt="" />
-          <img src="images/strip/study-1.jpg" alt="" />
-          <img src="images/team/ricard.jpg" alt="" />
-          <img src="images/strip/study-2.jpg" alt="" />
-          <img src="images/team/virginia.jpg" alt="" />
-          <img src="images/strip/study-3.jpg" alt="" />
-          <img src="images/team/frances-mari.jpg" alt="" />
-          <img src="images/team/salva.jpg" alt="" />
-          <!-- duplicate for seamless loop -->
-          <img src="images/team/lara.jpg" alt="" />
-          <img src="images/strip/study-1.jpg" alt="" />
-          <img src="images/team/ricard.jpg" alt="" />
-          <img src="images/strip/study-2.jpg" alt="" />
-          <img src="images/team/virginia.jpg" alt="" />
-          <img src="images/strip/study-3.jpg" alt="" />
-          <img src="images/team/frances-mari.jpg" alt="" />
-          <img src="images/team/salva.jpg" alt="" />
-        </div>
-      </div>
     </section>
 
     <!-- PROCESS -->
@@ -1601,9 +1688,10 @@
           <h2>Profesores que dejan huella</h2>
         </div>
         <div class="team-grid">
-          <div class="team-card reveal r-up">
+          <div class="team-card director reveal r-up">
+            <span class="badge">Director</span>
             <img src="images/team/frances-mari.jpg" alt="Francesc Marí, director de Estells" />
-            <div class="team-meta"><h3>Francesc Marí</h3><p>Director · Ciencias y técnicas de estudio</p></div>
+            <div class="team-meta"><h3>Francesc Marí</h3><p>Ciencias y técnicas de estudio</p></div>
           </div>
           <div class="team-card reveal r-up" style="transition-delay:.08s">
             <img src="images/team/virginia.jpg" alt="Virginia, profesora de Matemáticas" />
@@ -1751,14 +1839,16 @@
       document.getElementById("mmClose").addEventListener("click", close);
       mm.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
 
-      // Reveal on scroll — re-triggers both directions (persistent assembly)
+      // Reveal on scroll — re-triggers both directions, with a dead-zone
+      // between 0 and 0.2 ratio so elements resting near the edge don't flicker.
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
-            e.target.classList.toggle("in", e.isIntersecting);
+            if (e.intersectionRatio >= 0.2) e.target.classList.add("in");
+            else if (e.intersectionRatio <= 0.01) e.target.classList.remove("in");
           });
         },
-        { threshold: 0.18, rootMargin: "-6% 0px -10% 0px" }
+        { threshold: [0, 0.2, 0.5] }
       );
       document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
