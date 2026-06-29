@@ -246,12 +246,14 @@
         transition: max-width 0.5s var(--ease-out);
       }
       header.nav.scrolled .nav-inner {
-        max-width: 1080px;
+        justify-content: center;
+        gap: 14px;
       }
-      /* Converge only on wide screens; below this the content needs the room */
+      /* Converge only on wide screens; below this keep them spread (content needs the room) */
       @media (max-width: 1200px) {
         header.nav.scrolled .nav-inner {
-          max-width: 1240px;
+          justify-content: space-between;
+          gap: 16px;
         }
       }
       .nav-block {
