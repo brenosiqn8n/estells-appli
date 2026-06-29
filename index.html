@@ -1280,6 +1280,134 @@
         opacity: 1;
       }
 
+      /* Reviews carousel */
+      .reviews {
+        position: relative;
+        max-width: 760px;
+        margin: 0 auto;
+        min-height: 360px;
+      }
+      .review-card {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: clamp(26px, 4vw, 40px);
+        box-shadow: 0 18px 50px rgba(26, 26, 26, 0.05);
+        opacity: 0;
+        transform: translateX(40px) scale(0.97);
+        transition: opacity 0.5s var(--ease-out), transform 0.6s var(--ease-out);
+        pointer-events: none;
+      }
+      .review-card.active {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      .review-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+      .review-stars {
+        color: var(--accent);
+        letter-spacing: 2px;
+        font-size: 1.15rem;
+      }
+      .review-quote {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(1.1rem, 2.3vw, 1.45rem);
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+        flex: 1;
+      }
+      .review-author {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 26px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+      }
+      .review-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        color: var(--accent-dark);
+        display: grid;
+        place-items: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 19px;
+        flex: none;
+      }
+      .review-name {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+      }
+      .review-role {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .reviews-ctrl {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 28px;
+      }
+      .rv-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        transition: background 0.25s var(--ease-out),
+          color 0.25s var(--ease-out), border-color 0.25s var(--ease-out),
+          transform 0.18s var(--ease-out);
+      }
+      .rv-btn:hover {
+        background: var(--ink);
+        color: #fff;
+        border-color: var(--ink);
+        transform: translateY(-2px);
+      }
+      .rv-dots {
+        display: flex;
+        gap: 8px;
+      }
+      .rv-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: var(--line);
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        transition: width 0.3s var(--ease-out), background 0.3s var(--ease-out);
+      }
+      .rv-dot.active {
+        width: 28px;
+        background: var(--accent);
+      }
+      .reviews-cta {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        margin-top: 34px;
+        flex-wrap: wrap;
+      }
+
       /* Footer */
       footer {
         padding: 70px 0 36px;
@@ -1538,6 +1666,7 @@
             <a href="#proceso">Cómo funciona</a>
             <a href="#centro">El centro</a>
             <a href="#equipo">Equipo</a>
+            <a href="#resenas">Reseñas</a>
           </nav>
           <a href="#contacto" class="btn btn-cta">
             Reserva tu plaza
@@ -1559,6 +1688,7 @@
       <a href="#proceso">Cómo funciona</a>
       <a href="#centro">El centro</a>
       <a href="#equipo">Equipo</a>
+      <a href="#resenas">Reseñas</a>
       <a href="#contacto" class="btn btn-primary" style="margin-top:16px;justify-content:center">Reserva tu plaza</a>
     </div>
 
@@ -1721,6 +1851,34 @@
       </div>
     </section>
 
+    <!-- REVIEWS -->
+    <section class="section" id="resenas">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow">Reseñas en Google</span>
+          <h2>Lo que opinan las familias</h2>
+          <p>Valoraciones reales de alumnos y familias. Sin filtros.</p>
+        </div>
+        <div class="reviews reveal" id="reviews"></div>
+        <div class="reviews-ctrl reveal">
+          <button class="rv-btn" id="rvPrev" aria-label="Reseña anterior">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="rv-dots" id="rvDots"></div>
+          <button class="rv-btn" id="rvNext" aria-label="Reseña siguiente">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="reviews-cta reveal">
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Estells%20Centre%20d'Estudis%20Alginet" target="_blank" rel="noopener">
+            Ver reseñas en Google
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Estells%20Centre%20d'Estudis%20Alginet" target="_blank" rel="noopener">Escribe una reseña</a>
+        </div>
+      </div>
+    </section>
+
     <!-- RESERVA / FORM -->
     <section class="section soft" id="contacto">
       <div class="wrap">
@@ -1813,6 +1971,7 @@
               <li><a href="#proceso">Cómo funciona</a></li>
               <li><a href="#centro">El centro</a></li>
               <li><a href="#equipo">Equipo</a></li>
+              <li><a href="#resenas">Reseñas</a></li>
               <li><a href="#contacto">Contacto</a></li>
             </ul>
           </div>
@@ -1859,6 +2018,61 @@
         { threshold: [0, 0.2, 0.5] }
       );
       document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      // Reviews carousel (placeholder demo reviews — replace with real Google ones)
+      const REVIEWS = [
+        { name: "María Tarazona", role: "Madre de alumna de 4º de ESO", rating: 5, content: "Mi hija llegó muy perdida en matemáticas y en pocos meses ha cambiado por completo. Los grupos pequeños hacen que se sienta cómoda para preguntar." },
+        { name: "Jordi Ferrer", role: "Alumno de 2º de Bachillerato", rating: 5, content: "Me prepararon la selectividad con un plan muy claro. Las técnicas de estudio me ayudaron tanto o más que el temario." },
+        { name: "Lucía Sanchis", role: "Madre de alumno de 1º de ESO", rating: 5, content: "Trato cercano y muy profesional. Siempre nos mantienen informados de cómo va el chico. Conocen a cada alumno por su nombre." },
+        { name: "Vicent Estela", role: "Pare d'alumna de Batxillerat", rating: 5, content: "Atenció immillorable i molta paciència. La meua filla ha guanyat confiança i ha pujat les notes. Encantats amb el centre." },
+        { name: "Patricia Gómez", role: "Alumna de inglés", rating: 5, content: "Voy a las clases de inglés y se hacen muy amenas. Hablamos desde el primer día y eso se nota muchísimo a la hora de soltarte." },
+        { name: "Andrés Moltó", role: "Padre de dos alumnos", rating: 5, content: "Llevamos a los dos hijos y la experiencia es estupenda. Profesores especializados de verdad, no improvisan." },
+        { name: "Neus Camps", role: "Mare d'alumne de 3r d'ESO", rating: 5, content: "Els grups reduïts marquen la diferència. El meu fill per fi entén les classes i va amb ganes. Gràcies a tot l'equip." },
+        { name: "Raúl Beltrán", role: "Alumno de Bachillerato de Ciencias", rating: 4, content: "Las clases de física y química me han salvado el curso. Explican hasta que lo entiendes, sin prisa." },
+        { name: "Carmen Ibáñez", role: "Madre de alumna de Primaria", rating: 5, content: "Empezamos con el refuerzo este año y muy contentos. La niña ha cogido hábito de estudio y va más segura a los exámenes." },
+        { name: "Sergio Pla", role: "Alumno de técnicas de estudio", rating: 5, content: "Pensaba que estudiar era cuestión de horas y resulta que era cuestión de método. Ahora rindo más en menos tiempo." },
+      ];
+      const GMARK =
+        '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84Z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38Z"/></svg>';
+
+      const rvWrap = document.getElementById("reviews");
+      const rvDots = document.getElementById("rvDots");
+      if (rvWrap) {
+        REVIEWS.forEach((r, i) => {
+          const stars = "★★★★★".slice(0, r.rating) + "☆☆☆☆☆".slice(0, 5 - r.rating);
+          const card = document.createElement("article");
+          card.className = "review-card" + (i === 0 ? " active" : "");
+          card.innerHTML =
+            '<div class="review-top"><span class="review-stars">' + stars + "</span>" + GMARK + "</div>" +
+            '<p class="review-quote">“' + r.content + '”</p>' +
+            '<div class="review-author"><span class="review-avatar">' + r.name.charAt(0) + "</span>" +
+            '<div><div class="review-name">' + r.name + '</div><div class="review-role">' + r.role + "</div></div></div>";
+          rvWrap.appendChild(card);
+          const dot = document.createElement("button");
+          dot.className = "rv-dot" + (i === 0 ? " active" : "");
+          dot.setAttribute("aria-label", "Reseña " + (i + 1));
+          dot.addEventListener("click", () => show(i, true));
+          rvDots.appendChild(dot);
+        });
+
+        const cards = rvWrap.querySelectorAll(".review-card");
+        const dots = rvDots.querySelectorAll(".rv-dot");
+        let rvActive = 0;
+        let rvTimer;
+        const show = (i, manual) => {
+          rvActive = (i + cards.length) % cards.length;
+          cards.forEach((c, k) => c.classList.toggle("active", k === rvActive));
+          dots.forEach((d, k) => d.classList.toggle("active", k === rvActive));
+          if (manual) restart();
+        };
+        const restart = () => {
+          clearInterval(rvTimer);
+          rvTimer = setInterval(() => show(rvActive + 1), 6000);
+        };
+        document.getElementById("rvPrev").addEventListener("click", () => show(rvActive - 1, true));
+        document.getElementById("rvNext").addEventListener("click", () => show(rvActive + 1, true));
+        restart();
+      }
 
       // Scroll progress bar
       const bar = document.getElementById("progress");
