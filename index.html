@@ -246,9 +246,16 @@
         transition: max-width 0.5s var(--ease-out);
       }
       header.nav.scrolled .nav-inner {
-        max-width: 880px;
+        max-width: 1080px;
+      }
+      /* Converge only on wide screens; below this the content needs the room */
+      @media (max-width: 1200px) {
+        header.nav.scrolled .nav-inner {
+          max-width: 1240px;
+        }
       }
       .nav-block {
+        flex: none;
         background: rgba(255, 255, 255, 0.82);
         backdrop-filter: blur(16px) saturate(160%);
         -webkit-backdrop-filter: blur(16px) saturate(160%);
@@ -298,10 +305,11 @@
       }
       .nav-links {
         display: flex;
-        gap: 30px;
+        gap: 26px;
         font-size: 15px;
         font-weight: 500;
         color: var(--muted);
+        white-space: nowrap;
       }
       .nav-links a:hover {
         color: var(--ink);
