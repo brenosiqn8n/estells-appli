@@ -1125,13 +1125,21 @@
       }
       .wa:hover,
       .ig:hover {
-        border-color: var(--ink);
         transform: translateY(-2px);
       }
       .wa svg {
         width: 18px;
         height: 18px;
         color: #25d366;
+      }
+      .wa:hover {
+        border-color: transparent;
+        color: #fff;
+        background: linear-gradient(45deg, #128c7e, #25d366 55%, #5af78e);
+        box-shadow: 0 10px 26px rgba(37, 211, 102, 0.34);
+      }
+      .wa:hover svg {
+        color: #fff;
       }
       .ig svg {
         width: 18px;
