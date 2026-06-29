@@ -306,6 +306,28 @@
       .nav-links a:hover {
         color: var(--ink);
       }
+      .lang {
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 3px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .lang button {
+        border: 0;
+        background: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 999px;
+        color: var(--muted);
+        font-family: inherit;
+        transition: color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+      }
+      .lang button[aria-pressed="true"] {
+        background: var(--ink);
+        color: #fff;
+      }
       .nav-cta {
         display: flex;
         align-items: center;
@@ -1724,13 +1746,17 @@
         </a>
         <div class="nav-block nav-main">
           <nav class="nav-links">
-            <a href="#proceso">Cómo funciona</a>
-            <a href="#centro">El centro</a>
-            <a href="#equipo">Equipo</a>
-            <a href="#resenas">Reseñas</a>
+            <a href="#proceso" data-i18n="nav.proceso">Cómo funciona</a>
+            <a href="#centro" data-i18n="nav.centro">El centro</a>
+            <a href="#equipo" data-i18n="nav.equipo">Equipo</a>
+            <a href="#resenas" data-i18n="nav.resenas">Reseñas</a>
           </nav>
+          <div class="lang" role="group" aria-label="Idioma">
+            <button type="button" data-lang="es" aria-pressed="true">ES</button>
+            <button type="button" data-lang="va" aria-pressed="false">VA</button>
+          </div>
           <a href="#contacto" class="btn btn-cta">
-            Reserva tu plaza
+            <span data-i18n="nav.reserva">Reserva tu plaza</span>
             <span class="cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
           <button class="burger" id="burger" aria-label="Abrir menú">
@@ -1744,13 +1770,19 @@
     <div class="mobile-menu" id="mobileMenu">
       <div class="mm-top">
         <span class="brand"><img src="images/logo.png" alt="" />Estells</span>
-        <button class="mm-close" id="mmClose" aria-label="Cerrar">&times;</button>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="lang" role="group" aria-label="Idioma">
+            <button type="button" data-lang="es" aria-pressed="true">ES</button>
+            <button type="button" data-lang="va" aria-pressed="false">VA</button>
+          </div>
+          <button class="mm-close" id="mmClose" aria-label="Cerrar">&times;</button>
+        </div>
       </div>
-      <a href="#proceso">Cómo funciona</a>
-      <a href="#centro">El centro</a>
-      <a href="#equipo">Equipo</a>
-      <a href="#resenas">Reseñas</a>
-      <a href="#contacto" class="btn btn-primary" style="margin-top:16px;justify-content:center">Reserva tu plaza</a>
+      <a href="#proceso" data-i18n="nav.proceso">Cómo funciona</a>
+      <a href="#centro" data-i18n="nav.centro">El centro</a>
+      <a href="#equipo" data-i18n="nav.equipo">Equipo</a>
+      <a href="#resenas" data-i18n="nav.resenas">Reseñas</a>
+      <a href="#contacto" class="btn btn-primary" style="margin-top:16px;justify-content:center" data-i18n="nav.reserva">Reserva tu plaza</a>
     </div>
 
     <span id="top"></span>
@@ -1764,24 +1796,24 @@
         <span class="grid-dots"></span>
       </div>
       <div class="wrap">
-        <span class="pill reveal"><i class="dot"></i>Curso 2026–2027 · Plazas abiertas</span>
-        <h1 class="reveal">
+        <span class="pill reveal"><i class="dot"></i><span data-i18n="hero.pill">Curso 2026–2027 · Plazas abiertas</span></span>
+        <h1 class="reveal" data-i18n-html="hero.title">
           Aprende, mejora y <span class="hl">aprueba</span> en un solo lugar
         </h1>
-        <p class="lead reveal">
+        <p class="lead reveal" data-i18n="hero.lead">
           Refuerzo, técnicas de estudio e idiomas para ESO y Bachillerato.
           Grupos reducidos y profesores especializados que entienden a cada alumno.
         </p>
         <div class="hero-cta reveal">
           <a href="#contacto" class="btn btn-primary">
-            Reserva tu plaza
+            <span data-i18n="hero.cta1">Reserva tu plaza</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#centro" class="btn btn-ghost">Conoce el centro</a>
+          <a href="#centro" class="btn btn-ghost" data-i18n="hero.cta2">Conoce el centro</a>
         </div>
         <div class="rating reveal">
           <span class="stars">★★★★★</span>
-          <span><b>Valoraciones reales</b> de familias en Google</span>
+          <span data-i18n-html="hero.rating"><b>Valoraciones reales</b> de familias en Google</span>
         </div>
       </div>
 
@@ -1791,25 +1823,25 @@
     <section class="section soft" id="proceso">
       <div class="wrap">
         <div class="head center reveal">
-          <span class="eyebrow">Cómo funciona</span>
-          <h2>Empezar es muy sencillo</h2>
-          <p>Tres pasos y a estudiar. Te acompañamos desde el primer día.</p>
+          <span class="eyebrow" data-i18n="proceso.eyebrow">Cómo funciona</span>
+          <h2 data-i18n="proceso.h2">Empezar es muy sencillo</h2>
+          <p data-i18n="proceso.p">Tres pasos y a estudiar. Te acompañamos desde el primer día.</p>
         </div>
         <div class="steps">
           <div class="step reveal r-left">
             <div class="step-num">01</div>
-            <h3>Contacta</h3>
-            <p>Escríbenos o llámanos y cuéntanos qué necesita el alumno.</p>
+            <h3 data-i18n="proceso.s1t">Contacta</h3>
+            <p data-i18n="proceso.s1d">Escríbenos o llámanos y cuéntanos qué necesita el alumno.</p>
           </div>
           <div class="step reveal r-up" style="transition-delay:.1s">
             <div class="step-num">02</div>
-            <h3>Valoración inicial</h3>
-            <p>Analizamos su nivel y objetivos para proponer el plan adecuado.</p>
+            <h3 data-i18n="proceso.s2t">Valoración inicial</h3>
+            <p data-i18n="proceso.s2d">Analizamos su nivel y objetivos para proponer el plan adecuado.</p>
           </div>
           <div class="step reveal r-right" style="transition-delay:.2s">
             <div class="step-num">03</div>
-            <h3>Empieza</h3>
-            <p>Reservamos su plaza y comienza con seguimiento desde el primer día.</p>
+            <h3 data-i18n="proceso.s3t">Empieza</h3>
+            <p data-i18n="proceso.s3d">Reservamos su plaza y comienza con seguimiento desde el primer día.</p>
           </div>
         </div>
       </div>
@@ -1819,15 +1851,16 @@
     <section class="section soft" id="centro">
       <div class="wrap split">
         <div class="reveal">
-          <span class="eyebrow">Sobre Estells</span>
-          <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);margin:14px 0 18px">
+          <span class="eyebrow" data-i18n="centro.eyebrow">Sobre Estells</span>
+          <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);margin:14px 0 18px" data-i18n="centro.h2">
             Un espacio de confianza, adaptado a cada alumno
           </h2>
-          <p style="color:var(--muted);font-size:1.05rem">
+          <p style="color:var(--muted);font-size:1.05rem" data-i18n="centro.p">
             Con método, cercanía y seguimiento continuo ayudamos a cada alumno a
             avanzar a su ritmo y alcanzar sus metas.
           </p>
-          <a href="#contacto" class="btn btn-primary" style="margin-top:26px">Reserva tu plaza
+          <a href="#contacto" class="btn btn-primary" style="margin-top:26px">
+            <span data-i18n="centro.cta">Reserva tu plaza</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -1839,41 +1872,41 @@
     <section class="section">
       <div class="wrap">
         <div class="head reveal">
-          <span class="eyebrow">Por qué Estells</span>
-          <h2>Un método que se nota</h2>
-          <p>Atención personalizada, grupos reducidos y seguimiento real, en un mismo lugar.</p>
+          <span class="eyebrow" data-i18n="bento.eyebrow">Por qué Estells</span>
+          <h2 data-i18n="bento.h2">Un método que se nota</h2>
+          <p data-i18n="bento.p">Atención personalizada, grupos reducidos y seguimiento real, en un mismo lugar.</p>
         </div>
         <div class="bento">
           <div class="b-img col-7 row-2 reveal r-left">
             <img src="images/strip/study-1.jpg" alt="Material de estudio en Estells" />
-            <span class="cap">Aprende con método y constancia</span>
+            <span class="cap" data-i18n="bento.b1cap">Aprende con método y constancia</span>
           </div>
           <div class="b-accent b-card col-5 reveal r-down" style="transition-delay:.08s">
-            <span class="b-eyebrow">Atención</span>
-            <div class="b-big">Grupos reducidos,<br>atención de verdad</div>
-            <p>Pocos alumnos por aula para que nadie se quede atrás.</p>
+            <span class="b-eyebrow" data-i18n="bento.b2eye">Atención</span>
+            <div class="b-big" data-i18n-html="bento.b2big">Grupos reducidos,<br>atención de verdad</div>
+            <p data-i18n="bento.b2p">Pocos alumnos por aula para que nadie se quede atrás.</p>
           </div>
           <div class="b-card col-5 reveal r-right" style="transition-delay:.16s">
-            <span class="b-eyebrow" style="color:var(--accent-dark)">Seguimiento</span>
-            <div class="b-big" style="color:var(--ink)">Cerca del alumno<br>y de la familia</div>
-            <p>Comunicación constante y planes adaptados a cada uno.</p>
+            <span class="b-eyebrow" style="color:var(--accent-dark)" data-i18n="bento.b3eye">Seguimiento</span>
+            <div class="b-big" style="color:var(--ink)" data-i18n-html="bento.b3big">Cerca del alumno<br>y de la familia</div>
+            <p data-i18n="bento.b3p">Comunicación constante y planes adaptados a cada uno.</p>
           </div>
         </div>
         <div class="bento" style="margin-top:18px">
           <div class="b-dark b-card col-4 reveal r-left">
-            <span class="b-eyebrow">Idiomas</span>
-            <div class="b-big">Inglés · Francés · Chino</div>
-            <p>Profesorado especializado y método comunicativo.</p>
+            <span class="b-eyebrow" data-i18n="bento.b4eye">Idiomas</span>
+            <div class="b-big" data-i18n="bento.b4big">Inglés · Francés · Chino</div>
+            <p data-i18n="bento.b4p">Profesorado especializado y método comunicativo.</p>
           </div>
           <div class="b-card col-4 reveal r-up" style="transition-delay:.1s">
-            <span class="b-eyebrow" style="color:var(--accent-dark)">Horario</span>
-            <div class="b-big" style="color:var(--ink)">L–V · 16:00–20:30</div>
-            <p>En el centro de Alginet, de fácil acceso.</p>
+            <span class="b-eyebrow" style="color:var(--accent-dark)" data-i18n="bento.b5eye">Horario</span>
+            <div class="b-big" style="color:var(--ink)" data-i18n="bento.b5big">L–V · 16:00–20:30</div>
+            <p data-i18n="bento.b5p">En el centro de Alginet, de fácil acceso.</p>
           </div>
           <div class="b-accent b-card col-4 reveal r-right" style="transition-delay:.2s">
-            <span class="b-eyebrow">Exámenes</span>
-            <div class="b-big">Preparación PAU<br>y recuperaciones</div>
-            <p>Planes específicos para selectividad, finales y septiembre.</p>
+            <span class="b-eyebrow" data-i18n="bento.b6eye">Exámenes</span>
+            <div class="b-big" data-i18n-html="bento.b6big">Preparación PAU<br>y recuperaciones</div>
+            <p data-i18n="bento.b6p">Planes específicos para selectividad, finales y septiembre.</p>
           </div>
         </div>
       </div>
@@ -1883,30 +1916,30 @@
     <section class="section soft" id="equipo">
       <div class="wrap">
         <div class="head center reveal">
-          <span class="eyebrow">Nuestro equipo</span>
-          <h2>Profesores que dejan huella</h2>
+          <span class="eyebrow" data-i18n="equipo.eyebrow">Nuestro equipo</span>
+          <h2 data-i18n="equipo.h2">Profesores que dejan huella</h2>
         </div>
         <div class="team-grid">
           <div class="team-card director reveal r-up">
-            <span class="badge">Director</span>
+            <span class="badge" data-i18n="equipo.badge">Director</span>
             <img src="images/team/frances-mari.jpg" alt="Francesc Marí, director de Estells" />
-            <div class="team-meta"><h3>Francesc Marí</h3><p>Ciencias y técnicas de estudio</p></div>
+            <div class="team-meta"><h3>Francesc Marí</h3><p data-i18n="equipo.r1">Ciencias y técnicas de estudio</p></div>
           </div>
           <div class="team-card reveal r-up" style="transition-delay:.08s">
             <img src="images/team/virginia.jpg" alt="Virginia, profesora de Matemáticas" />
-            <div class="team-meta"><h3>Virginia</h3><p>Profesora de Matemáticas</p></div>
+            <div class="team-meta"><h3>Virginia</h3><p data-i18n="equipo.r2">Profesora de Matemáticas</p></div>
           </div>
           <div class="team-card reveal r-up" style="transition-delay:.16s">
             <img src="images/team/ricard.jpg" alt="Ricard, profesor de Lengua e Idiomas" />
-            <div class="team-meta"><h3>Ricard</h3><p>Profesor de Lengua e Idiomas</p></div>
+            <div class="team-meta"><h3>Ricard</h3><p data-i18n="equipo.r3">Profesor de Lengua e Idiomas</p></div>
           </div>
           <div class="team-card reveal r-up" style="transition-delay:.08s">
             <img src="images/team/lara.jpg" alt="Lara, profesora de Lengua" />
-            <div class="team-meta"><h3>Lara</h3><p>Profesora de Lengua</p></div>
+            <div class="team-meta"><h3>Lara</h3><p data-i18n="equipo.r4">Profesora de Lengua</p></div>
           </div>
           <div class="team-card reveal r-up" style="transition-delay:.16s">
             <img src="images/team/salva.jpg" alt="Salva, profesor de Física" />
-            <div class="team-meta"><h3>Salva</h3><p>Profesor de Física</p></div>
+            <div class="team-meta"><h3>Salva</h3><p data-i18n="equipo.r5">Profesor de Física</p></div>
           </div>
         </div>
       </div>
@@ -1916,9 +1949,9 @@
     <section class="section" id="resenas">
       <div class="wrap">
         <div class="head center reveal">
-          <span class="eyebrow">Reseñas en Google</span>
-          <h2>Lo que opinan las familias</h2>
-          <p>Valoraciones reales de alumnos y familias. Sin filtros.</p>
+          <span class="eyebrow" data-i18n="reviews.eyebrow">Reseñas en Google</span>
+          <h2 data-i18n="reviews.h2">Lo que opinan las familias</h2>
+          <p data-i18n="reviews.p">Valoraciones reales de alumnos y familias. Sin filtros.</p>
         </div>
         <div class="reviews reveal" id="reviews"></div>
         <div class="reviews-ctrl reveal">
@@ -1932,10 +1965,10 @@
         </div>
         <div class="reviews-cta reveal">
           <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Estells%20Centre%20d'Estudis%20Alginet" target="_blank" rel="noopener">
-            Ver reseñas en Google
+            <span data-i18n="reviews.cta1">Ver reseñas en Google</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Estells%20Centre%20d'Estudis%20Alginet" target="_blank" rel="noopener">Escribe una reseña</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Estells%20Centre%20d'Estudis%20Alginet" target="_blank" rel="noopener" data-i18n="reviews.cta2">Escribe una reseña</a>
         </div>
       </div>
     </section>
@@ -1945,17 +1978,17 @@
       <div class="wrap">
         <div class="reserva-grid">
           <div class="reserva-pitch reveal r-left" id="reservaPitch">
-            <span class="eyebrow">Contacta o reserva</span>
+            <span class="eyebrow" data-i18n="form.eyebrow">Contacta o reserva</span>
             <h2 id="formTitle" class="shine-text">Empieza en Estells</h2>
             <p id="formSubtitle">Déjanos tus datos y te respondemos en menos de 24 horas. También intensivos de verano y clases especiales.</p>
             <div class="social-row">
               <a class="wa" href="https://wa.me/34600000000" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                Escríbenos por WhatsApp
+                <span data-i18n="form.wa">Escríbenos por WhatsApp</span>
               </a>
               <a class="ig" href="https://www.instagram.com/estellsce/" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
-                Síguenos en Instagram
+                <span data-i18n="form.ig">Síguenos en Instagram</span>
               </a>
             </div>
           </div>
@@ -1963,42 +1996,42 @@
           <div class="reveal r-right">
             <form class="form-card" id="reservaForm" data-mode="reserva" novalidate>
               <div class="seg" role="group" aria-label="Tipo de solicitud">
-                <button type="button" data-mode="reserva" aria-pressed="true">Reserva tu plaza</button>
-                <button type="button" data-mode="contacto" aria-pressed="false">Contacta</button>
+                <button type="button" data-mode="reserva" aria-pressed="true" data-i18n="form.segReserva">Reserva tu plaza</button>
+                <button type="button" data-mode="contacto" aria-pressed="false" data-i18n="form.segContacto">Contacta</button>
               </div>
               <div class="form-row">
                 <div class="field">
-                  <label for="f-name">Nombre completo <span class="req">*</span></label>
+                  <label for="f-name"><span data-i18n="form.name">Nombre completo</span> <span class="req">*</span></label>
                   <input id="f-name" name="name" type="text" required autocomplete="name" />
                 </div>
                 <div class="field">
-                  <label for="f-phone">Teléfono <span class="req">*</span></label>
+                  <label for="f-phone"><span data-i18n="form.phone">Teléfono</span> <span class="req">*</span></label>
                   <input id="f-phone" name="phone" type="tel" required autocomplete="tel" />
                 </div>
                 <div class="field">
-                  <label for="f-email">Email <span class="req">*</span></label>
+                  <label for="f-email"><span data-i18n="form.email">Email</span> <span class="req">*</span></label>
                   <input id="f-email" name="email" type="email" required autocomplete="email" />
                 </div>
                 <div class="reserva-only">
                   <div class="field">
-                    <label for="f-level">Nivel <span class="req">*</span></label>
+                    <label for="f-level"><span data-i18n="form.level">Nivel</span> <span class="req">*</span></label>
                     <select id="f-level" name="level" required>
                       <option value="" disabled selected>—</option>
-                      <option>Primaria</option>
+                      <option data-i18n="form.lvl1">Primaria</option>
                       <option>ESO</option>
-                      <option>Bachillerato</option>
-                      <option>Idiomas</option>
-                      <option>Otro</option>
+                      <option data-i18n="form.lvl3">Bachillerato</option>
+                      <option data-i18n="form.lvl4">Idiomas</option>
+                      <option data-i18n="form.lvl5">Otro</option>
                     </select>
                   </div>
                   <div class="field full">
-                    <label for="f-subject">Asignatura o idioma</label>
+                    <label for="f-subject" data-i18n="form.subject">Asignatura o idioma</label>
                     <input id="f-subject" name="subject" type="text" />
                   </div>
                 </div>
                 <div class="field full">
-                  <label for="f-msg">Mensaje · <span style="text-transform:none;color:var(--faint)">opcional</span></label>
-                  <textarea id="f-msg" name="message" rows="3" placeholder="Cuéntanos qué necesitas"></textarea>
+                  <label for="f-msg"><span data-i18n="form.message">Mensaje</span> · <span style="text-transform:none;color:var(--faint)" data-i18n="form.optional">opcional</span></label>
+                  <textarea id="f-msg" name="message" rows="3" placeholder="Cuéntanos qué necesitas" data-i18n-ph="form.msgPh"></textarea>
                 </div>
               </div>
               <div class="form-foot">
@@ -2006,7 +2039,7 @@
                   <span id="submitLabel">Solicitar reserva</span>
                   <span class="cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </button>
-                <p class="form-note">Al enviar aceptas que contactemos contigo sobre tu solicitud.</p>
+                <p class="form-note" data-i18n="form.note">Al enviar aceptas que contactemos contigo sobre tu solicitud.</p>
               </div>
               <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
             </form>
@@ -2021,23 +2054,23 @@
         <div class="foot-grid">
           <div>
             <span class="brand"><img src="images/logo.png" alt="" />Estells</span>
-            <p style="color:var(--muted);margin-top:16px;max-width:340px">
+            <p style="color:var(--muted);margin-top:16px;max-width:340px" data-i18n="footer.tagline">
               Donde el aprendizaje cobra vida. Apoyo educativo cercano y
               personalizado en Alginet, València.
             </p>
           </div>
           <div>
-            <h4>Centro</h4>
+            <h4 data-i18n="footer.col1">Centro</h4>
             <ul>
-              <li><a href="#proceso">Cómo funciona</a></li>
-              <li><a href="#centro">El centro</a></li>
-              <li><a href="#equipo">Equipo</a></li>
-              <li><a href="#resenas">Reseñas</a></li>
-              <li><a href="#contacto">Contacto</a></li>
+              <li><a href="#proceso" data-i18n="nav.proceso">Cómo funciona</a></li>
+              <li><a href="#centro" data-i18n="nav.centro">El centro</a></li>
+              <li><a href="#equipo" data-i18n="nav.equipo">Equipo</a></li>
+              <li><a href="#resenas" data-i18n="nav.resenas">Reseñas</a></li>
+              <li><a href="#contacto" data-i18n="footer.contacto">Contacto</a></li>
             </ul>
           </div>
           <div>
-            <h4>Contacto</h4>
+            <h4 data-i18n="footer.contacto">Contacto</h4>
             <ul>
               <li><a href="mailto:estellscentre@gmail.com">estellscentre@gmail.com</a></li>
               <li><a href="tel:+34600000000">+34 600 000 000</a></li>
@@ -2046,13 +2079,118 @@
           </div>
         </div>
         <div class="foot-bot">
-          <span>© 2026 Estells Centre d'Estudis. Todos los derechos reservados.</span>
+          <span data-i18n="footer.rights">© 2026 Estells Centre d'Estudis. Todos los derechos reservados.</span>
           <span>Alginet · València</span>
         </div>
       </div>
     </footer>
 
     <script>
+      // ---- i18n (ES / Valencià) ----
+      const I18N = {
+        es: {
+          "nav.proceso": "Cómo funciona", "nav.centro": "El centro", "nav.equipo": "Equipo", "nav.resenas": "Reseñas", "nav.reserva": "Reserva tu plaza",
+          "hero.pill": "Curso 2026–2027 · Plazas abiertas",
+          "hero.title": 'Aprende, mejora y <span class="hl">aprueba</span> en un solo lugar',
+          "hero.lead": "Refuerzo, técnicas de estudio e idiomas para ESO y Bachillerato. Grupos reducidos y profesores especializados que entienden a cada alumno.",
+          "hero.cta1": "Reserva tu plaza", "hero.cta2": "Conoce el centro",
+          "hero.rating": "<b>Valoraciones reales</b> de familias en Google",
+          "proceso.eyebrow": "Cómo funciona", "proceso.h2": "Empezar es muy sencillo", "proceso.p": "Tres pasos y a estudiar. Te acompañamos desde el primer día.",
+          "proceso.s1t": "Contacta", "proceso.s1d": "Escríbenos o llámanos y cuéntanos qué necesita el alumno.",
+          "proceso.s2t": "Valoración inicial", "proceso.s2d": "Analizamos su nivel y objetivos para proponer el plan adecuado.",
+          "proceso.s3t": "Empieza", "proceso.s3d": "Reservamos su plaza y comienza con seguimiento desde el primer día.",
+          "centro.eyebrow": "Sobre Estells", "centro.h2": "Un espacio de confianza, adaptado a cada alumno",
+          "centro.p": "Con método, cercanía y seguimiento continuo ayudamos a cada alumno a avanzar a su ritmo y alcanzar sus metas.", "centro.cta": "Reserva tu plaza",
+          "bento.eyebrow": "Por qué Estells", "bento.h2": "Un método que se nota", "bento.p": "Atención personalizada, grupos reducidos y seguimiento real, en un mismo lugar.",
+          "bento.b1cap": "Aprende con método y constancia",
+          "bento.b2eye": "Atención", "bento.b2big": "Grupos reducidos,<br>atención de verdad", "bento.b2p": "Pocos alumnos por aula para que nadie se quede atrás.",
+          "bento.b3eye": "Seguimiento", "bento.b3big": "Cerca del alumno<br>y de la familia", "bento.b3p": "Comunicación constante y planes adaptados a cada uno.",
+          "bento.b4eye": "Idiomas", "bento.b4big": "Inglés · Francés · Chino", "bento.b4p": "Profesorado especializado y método comunicativo.",
+          "bento.b5eye": "Horario", "bento.b5big": "L–V · 16:00–20:30", "bento.b5p": "En el centro de Alginet, de fácil acceso.",
+          "bento.b6eye": "Exámenes", "bento.b6big": "Preparación PAU<br>y recuperaciones", "bento.b6p": "Planes específicos para selectividad, finales y septiembre.",
+          "equipo.eyebrow": "Nuestro equipo", "equipo.h2": "Profesores que dejan huella", "equipo.badge": "Director",
+          "equipo.r1": "Ciencias y técnicas de estudio", "equipo.r2": "Profesora de Matemáticas", "equipo.r3": "Profesor de Lengua e Idiomas", "equipo.r4": "Profesora de Lengua", "equipo.r5": "Profesor de Física",
+          "reviews.eyebrow": "Reseñas en Google", "reviews.h2": "Lo que opinan las familias", "reviews.p": "Valoraciones reales de alumnos y familias. Sin filtros.", "reviews.cta1": "Ver reseñas en Google", "reviews.cta2": "Escribe una reseña",
+          "form.eyebrow": "Contacta o reserva", "form.segReserva": "Reserva tu plaza", "form.segContacto": "Contacta",
+          "form.name": "Nombre completo", "form.phone": "Teléfono", "form.email": "Email", "form.level": "Nivel",
+          "form.lvl1": "Primaria", "form.lvl3": "Bachillerato", "form.lvl4": "Idiomas", "form.lvl5": "Otro",
+          "form.subject": "Asignatura o idioma", "form.message": "Mensaje", "form.optional": "opcional", "form.msgPh": "Cuéntanos qué necesitas",
+          "form.note": "Al enviar aceptas que contactemos contigo sobre tu solicitud.",
+          "form.reservaTitle": "Empieza en Estells", "form.reservaSubtitle": "Déjanos tus datos y te respondemos en menos de 24 horas. También intensivos de verano y clases especiales.", "form.reservaSubmit": "Solicitar reserva",
+          "form.contactoTitle": "Hablemos", "form.contactoSubtitle": "¿Tienes una duda o quieres más información? Escríbenos y te respondemos en menos de 24 horas.", "form.contactoSubmit": "Enviar mensaje",
+          "form.statusReserva": "¡Listo! Abrimos tu correo para enviar la solicitud.", "form.statusContacto": "¡Listo! Abrimos tu correo para enviar el mensaje.",
+          "form.wa": "Escríbenos por WhatsApp", "form.ig": "Síguenos en Instagram",
+          "footer.tagline": "Donde el aprendizaje cobra vida. Apoyo educativo cercano y personalizado en Alginet, València.", "footer.col1": "Centro", "footer.contacto": "Contacto", "footer.rights": "© 2026 Estells Centre d'Estudis. Todos los derechos reservados.",
+        },
+        va: {
+          "nav.proceso": "Com funciona", "nav.centro": "El centre", "nav.equipo": "Equip", "nav.resenas": "Ressenyes", "nav.reserva": "Reserva la teua plaça",
+          "hero.pill": "Curs 2026–2027 · Places obertes",
+          "hero.title": 'Aprén, millora i <span class="hl">aprova</span> en un sol lloc',
+          "hero.lead": "Reforç, tècniques d'estudi i idiomes per a ESO i Batxillerat. Grups reduïts i professorat especialitzat que entén cada alumne.",
+          "hero.cta1": "Reserva la teua plaça", "hero.cta2": "Coneix el centre",
+          "hero.rating": "<b>Valoracions reals</b> de famílies a Google",
+          "proceso.eyebrow": "Com funciona", "proceso.h2": "Començar és molt senzill", "proceso.p": "Tres passos i a estudiar. T'acompanyem des del primer dia.",
+          "proceso.s1t": "Contacta", "proceso.s1d": "Escriu-nos o telefona'ns i conta'ns què necessita l'alumne.",
+          "proceso.s2t": "Valoració inicial", "proceso.s2d": "Analitzem el seu nivell i objectius per a proposar el pla adequat.",
+          "proceso.s3t": "Comença", "proceso.s3d": "Reservem la seua plaça i comença amb seguiment des del primer dia.",
+          "centro.eyebrow": "Sobre Estells", "centro.h2": "Un espai de confiança, adaptat a cada alumne",
+          "centro.p": "Amb mètode, proximitat i seguiment continu ajudem cada alumne a avançar al seu ritme i assolir les seues metes.", "centro.cta": "Reserva la teua plaça",
+          "bento.eyebrow": "Per què Estells", "bento.h2": "Un mètode que es nota", "bento.p": "Atenció personalitzada, grups reduïts i seguiment real, en un mateix lloc.",
+          "bento.b1cap": "Aprén amb mètode i constància",
+          "bento.b2eye": "Atenció", "bento.b2big": "Grups reduïts,<br>atenció de veritat", "bento.b2p": "Pocs alumnes per aula perquè ningú es quede arrere.",
+          "bento.b3eye": "Seguiment", "bento.b3big": "A prop de l'alumne<br>i de la família", "bento.b3p": "Comunicació constant i plans adaptats a cadascú.",
+          "bento.b4eye": "Idiomes", "bento.b4big": "Anglés · Francés · Xinés", "bento.b4p": "Professorat especialitzat i mètode comunicatiu.",
+          "bento.b5eye": "Horari", "bento.b5big": "DL–DV · 16:00–20:30", "bento.b5p": "Al centre d'Alginet, de fàcil accés.",
+          "bento.b6eye": "Exàmens", "bento.b6big": "Preparació PAU<br>i recuperacions", "bento.b6p": "Plans específics per a selectivitat, finals i setembre.",
+          "equipo.eyebrow": "El nostre equip", "equipo.h2": "Professors que deixen empremta", "equipo.badge": "Director",
+          "equipo.r1": "Ciències i tècniques d'estudi", "equipo.r2": "Professora de Matemàtiques", "equipo.r3": "Professor de Llengua i Idiomes", "equipo.r4": "Professora de Llengua", "equipo.r5": "Professor de Física",
+          "reviews.eyebrow": "Ressenyes a Google", "reviews.h2": "Què opinen les famílies", "reviews.p": "Valoracions reals d'alumnes i famílies. Sense filtres.", "reviews.cta1": "Veure ressenyes a Google", "reviews.cta2": "Escriu una ressenya",
+          "form.eyebrow": "Contacta o reserva", "form.segReserva": "Reserva la teua plaça", "form.segContacto": "Contacta",
+          "form.name": "Nom complet", "form.phone": "Telèfon", "form.email": "Email", "form.level": "Nivell",
+          "form.lvl1": "Primària", "form.lvl3": "Batxillerat", "form.lvl4": "Idiomes", "form.lvl5": "Altre",
+          "form.subject": "Assignatura o idioma", "form.message": "Missatge", "form.optional": "opcional", "form.msgPh": "Conta'ns què necessites",
+          "form.note": "En enviar acceptes que et contactem sobre la teua sol·licitud.",
+          "form.reservaTitle": "Comença a Estells", "form.reservaSubtitle": "Deixa'ns les teues dades i et responem en menys de 24 hores. També intensius d'estiu i classes especials.", "form.reservaSubmit": "Sol·licitar reserva",
+          "form.contactoTitle": "Parlem", "form.contactoSubtitle": "Tens un dubte o vols més informació? Escriu-nos i et responem en menys de 24 hores.", "form.contactoSubmit": "Enviar missatge",
+          "form.statusReserva": "Fet! Obrim el teu correu per a enviar la sol·licitud.", "form.statusContacto": "Fet! Obrim el teu correu per a enviar el missatge.",
+          "form.wa": "Escriu-nos per WhatsApp", "form.ig": "Segueix-nos a Instagram",
+          "footer.tagline": "On l'aprenentatge cobra vida. Suport educatiu pròxim i personalitzat a Alginet, València.", "footer.col1": "Centre", "footer.contacto": "Contacte", "footer.rights": "© 2026 Estells Centre d'Estudis. Tots els drets reservats.",
+        },
+      };
+      let lang = localStorage.getItem("estells-lang");
+      if (lang !== "es" && lang !== "va") lang = "es";
+      function t(key) {
+        return (I18N[lang] && I18N[lang][key]) != null ? I18N[lang][key] : (I18N.es[key] || "");
+      }
+      function applyI18n() {
+        document.documentElement.lang = lang === "va" ? "ca-ES-valencia" : "es";
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const v = t(el.dataset.i18n);
+          if (v) el.textContent = v;
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          const v = t(el.dataset.i18nHtml);
+          if (v) el.innerHTML = v;
+        });
+        document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
+          const v = t(el.dataset.i18nPh);
+          if (v) el.placeholder = v;
+        });
+        document.querySelectorAll(".lang button").forEach((b) =>
+          b.setAttribute("aria-pressed", String(b.dataset.lang === lang))
+        );
+      }
+      function setLang(l) {
+        lang = l;
+        localStorage.setItem("estells-lang", l);
+        applyI18n();
+        if (window.refreshForm) window.refreshForm();
+      }
+      document.querySelectorAll(".lang button").forEach((b) =>
+        b.addEventListener("click", () => setLang(b.dataset.lang))
+      );
+      applyI18n();
+
       // Nav scroll state
       const nav = document.getElementById("nav");
       const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 12);
@@ -2153,34 +2291,21 @@
       const formTitle = document.getElementById("formTitle");
       const formSubtitle = document.getElementById("formSubtitle");
 
-      const COPY = {
-        reserva: {
-          title: "Empieza en Estells",
-          subtitle:
-            "Déjanos tus datos y te respondemos en menos de 24 horas. También intensivos de verano y clases especiales.",
-          submit: "Solicitar reserva",
-          subject: "Reserva de plaza · Estells",
-        },
-        contacto: {
-          title: "Hablemos",
-          subtitle:
-            "¿Tienes una duda o quieres más información? Escríbenos y te respondemos en menos de 24 horas.",
-          submit: "Enviar mensaje",
-          subject: "Consulta · Estells",
-        },
-      };
+      const SUBJECT = { reserva: "Reserva de plaza · Estells", contacto: "Consulta · Estells" };
 
       const setMode = (mode) => {
         form.dataset.mode = mode;
         levelSel.required = mode === "reserva";
-        submitLabel.textContent = COPY[mode].submit;
-        formTitle.textContent = COPY[mode].title;
-        formSubtitle.textContent = COPY[mode].subtitle;
+        submitLabel.textContent = t("form." + mode + "Submit");
+        formTitle.textContent = t("form." + mode + "Title");
+        formSubtitle.textContent = t("form." + mode + "Subtitle");
         form.querySelectorAll(".seg button").forEach((b) =>
           b.setAttribute("aria-pressed", b.dataset.mode === mode)
         );
         status.classList.remove("show");
       };
+      window.refreshForm = () => setMode(form.dataset.mode);
+      setMode("reserva");
 
       const pitch = document.getElementById("reservaPitch");
       const animateMode = (mode) => {
@@ -2219,13 +2344,11 @@
         lines.push("Mensaje: " + (d.get("message") || "—"));
         const href =
           "mailto:estellscentre@gmail.com?subject=" +
-          encodeURIComponent(COPY[mode].subject) +
+          encodeURIComponent(SUBJECT[mode]) +
           "&body=" +
           encodeURIComponent(lines.join("\n"));
         window.location.href = href;
-        status.textContent =
-          "¡Listo! Abrimos tu correo para enviar " +
-          (mode === "reserva" ? "la solicitud." : "el mensaje.");
+        status.textContent = t("form.status" + (mode === "reserva" ? "Reserva" : "Contacto"));
         status.classList.add("show");
       });
     </script>
