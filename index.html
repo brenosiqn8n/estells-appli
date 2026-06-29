@@ -1,0 +1,1777 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estells · Centre d'Estudis — Alginet</title>
+    <meta
+      name="description"
+      content="Estells Centre d'Estudis en Alginet. Refuerzo, técnicas de estudio e idiomas para ESO y Bachillerato. Grupos reducidos y atención personalizada."
+    />
+    <link rel="icon" type="image/png" href="images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --soft: #f8f7f4;
+        --soft-2: #f0efeb;
+        --ink: #1a1a1a;
+        --muted: #5c5c5c;
+        --faint: #8f8f8f;
+        --line: #e4e3df;
+        --accent: #d4a853;
+        --accent-dark: #c99a40;
+        --accent-soft: #f6ecd6;
+        --radius: 18px;
+        --maxw: 1180px;
+        --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+        --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Space Grotesk", "Inter", sans-serif;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      section[id] {
+        scroll-margin-top: 90px;
+      }
+
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--accent-dark);
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 22px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: transform 0.18s var(--ease-out),
+          background 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
+      .btn svg {
+        width: 18px;
+        height: 18px;
+        transition: transform 0.4s var(--ease-out);
+      }
+      .btn:hover svg {
+        transform: translateX(4px);
+      }
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(
+          120deg,
+          #c99a40,
+          #d4a853 45%,
+          #e8c97a 60%,
+          #d4a853 80%,
+          #c99a40
+        );
+        background-size: 220% 100%;
+        box-shadow: 0 8px 24px rgba(212, 168, 83, 0.3);
+        animation: ctaflow 7s linear infinite;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 34px rgba(212, 168, 83, 0.46);
+      }
+      .btn-ghost {
+        background: #fff;
+        color: var(--ink);
+        border-color: var(--line);
+      }
+      .btn-ghost:hover {
+        border-color: var(--ink);
+        transform: translateY(-2px);
+      }
+      .btn-dark {
+        background: var(--ink);
+        color: #fff;
+      }
+      .btn-dark:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Cooler CTA */
+      .btn-cta {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        padding: 8px 8px 8px 22px;
+        background: linear-gradient(
+          120deg,
+          #c99a40,
+          #d4a853 45%,
+          #e8c97a 60%,
+          #d4a853 80%,
+          #c99a40
+        );
+        background-size: 220% 100%;
+        box-shadow: 0 8px 24px rgba(212, 168, 83, 0.34);
+        animation: ctaflow 7s linear infinite;
+      }
+      @keyframes ctaflow {
+        to {
+          background-position: 220% 0;
+        }
+      }
+      .btn-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 36px rgba(212, 168, 83, 0.5);
+      }
+      /* Sheen sweep */
+      .btn-cta::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -130%;
+        width: 55%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.55),
+          transparent
+        );
+        transform: skewX(-20deg);
+        transition: left 0.6s var(--ease-out);
+      }
+      .btn-cta:hover::after {
+        left: 150%;
+      }
+      .cta-ic {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #fff;
+        flex: none;
+      }
+      .cta-ic svg {
+        width: 16px;
+        height: 16px;
+        color: var(--accent-dark);
+        stroke: var(--accent-dark);
+        transition: transform 0.45s var(--ease-out);
+      }
+      .btn-cta:hover .cta-ic svg {
+        transform: rotate(-45deg);
+      }
+
+      /* Scroll progress */
+      .progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        background: linear-gradient(90deg, var(--accent-dark), #e8c97a);
+        z-index: 70;
+        transition: width 0.1s linear;
+      }
+
+      /* Nav */
+      header.nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 50;
+        padding: 18px 24px;
+        transition: padding 0.45s var(--ease-out);
+      }
+      header.nav.scrolled {
+        padding-top: 12px;
+      }
+      .nav-inner {
+        max-width: 1240px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        transition: max-width 0.5s var(--ease-out);
+      }
+      header.nav.scrolled .nav-inner {
+        max-width: 880px;
+      }
+      .nav-block {
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(16px) saturate(160%);
+        -webkit-backdrop-filter: blur(16px) saturate(160%);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(11, 18, 32, 0.06);
+        transition: box-shadow 0.4s var(--ease-out);
+      }
+      header.nav.scrolled .nav-block {
+        box-shadow: 0 12px 34px rgba(11, 18, 32, 0.13);
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        height: 66px;
+        padding: 0 24px;
+      }
+      .nav-logo img {
+        width: 48px;
+        height: 48px;
+      }
+      .nav-logo .brand {
+        font-size: 20px;
+      }
+      .nav-main {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        height: 66px;
+        padding: 0 12px 0 28px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .brand img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #fff;
+      }
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--muted);
+      }
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        padding: 8px;
+      }
+      .burger span {
+        width: 22px;
+        height: 2px;
+        background: var(--ink);
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 150px 0 70px;
+        text-align: center;
+        position: relative;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 760px;
+        height: 760px;
+        max-width: 120vw;
+        background: radial-gradient(
+          circle,
+          rgba(212, 168, 83, 0.12),
+          transparent 62%
+        );
+        z-index: -1;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 14px 7px 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 26px;
+      }
+      .pill {
+        padding: 8px 16px;
+      }
+      .pill .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        position: relative;
+        flex: none;
+      }
+      .pill .dot::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: ping 1.8s var(--ease-out) infinite;
+      }
+      @keyframes ping {
+        0% {
+          transform: scale(1);
+          opacity: 0.6;
+        }
+        80%,
+        100% {
+          transform: scale(2.6);
+          opacity: 0;
+        }
+      }
+      .hero h1 {
+        font-size: clamp(2.6rem, 7vw, 5rem);
+        max-width: 14ch;
+        margin: 0 auto 22px;
+      }
+      .hero h1 .hl {
+        color: var(--accent);
+        position: relative;
+        white-space: nowrap;
+      }
+      .hero p.lead {
+        font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+        color: var(--muted);
+        max-width: 620px;
+        margin: 0 auto 34px;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .rating {
+        margin-top: 30px;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .stars {
+        color: var(--accent);
+        letter-spacing: 2px;
+      }
+      .rating b {
+        color: var(--ink);
+      }
+
+      /* Image marquee */
+      .marquee {
+        margin-top: 60px;
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent,
+          #000 8%,
+          #000 92%,
+          transparent
+        );
+        mask-image: linear-gradient(
+          90deg,
+          transparent,
+          #000 8%,
+          #000 92%,
+          transparent
+        );
+      }
+      .marquee-track {
+        display: flex;
+        gap: 18px;
+        width: max-content;
+        animation: scroll 48s linear infinite;
+      }
+      .marquee:hover .marquee-track {
+        animation-play-state: paused;
+      }
+      .marquee-track img {
+        height: 230px;
+        width: 320px;
+        object-fit: cover;
+        border-radius: var(--radius);
+        background: var(--soft);
+      }
+      @keyframes scroll {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Generic section */
+      .section {
+        padding: 92px 0;
+      }
+      .section.soft {
+        background: var(--soft);
+      }
+      .head {
+        max-width: 640px;
+        margin-bottom: 56px;
+      }
+      .head.center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      .head h2 {
+        font-size: clamp(1.9rem, 4vw, 3rem);
+        margin: 14px 0 14px;
+      }
+      .head p {
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      /* Steps */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        counter-reset: step;
+      }
+      .step {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 32px 28px;
+        transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      }
+      .step:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(11, 18, 32, 0.08);
+      }
+      .step-num {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: var(--accent-soft);
+        color: var(--accent-dark);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 22px;
+      }
+      .step h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+      .step p {
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+
+      /* Features grid */
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .feature {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 28px;
+      }
+      .feature .ic {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: var(--ink);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        margin-bottom: 18px;
+      }
+      .feature .ic svg {
+        width: 22px;
+        height: 22px;
+      }
+      .feature h3 {
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+      }
+      .feature p {
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      /* Stats strip */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        text-align: center;
+      }
+      .stat .n {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .stat .l {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-top: 4px;
+      }
+
+      /* Split / mission */
+      .split {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 56px;
+        align-items: center;
+      }
+      .split img {
+        width: 100%;
+        border-radius: 24px;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+      }
+      .check {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+        align-items: flex-start;
+      }
+      .check svg {
+        flex: none;
+        width: 22px;
+        height: 22px;
+        color: var(--accent);
+        margin-top: 2px;
+      }
+      .check b {
+        display: block;
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .check span {
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      /* CTA band */
+      .cta-band {
+        background: var(--ink);
+        color: #fff;
+        border-radius: 28px;
+        padding: 64px 48px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-band::after {
+        content: "";
+        position: absolute;
+        inset: auto -10% -60% -10%;
+        height: 320px;
+        background: radial-gradient(
+          circle,
+          rgba(212, 168, 83, 0.35),
+          transparent 60%
+        );
+      }
+      .cta-band h2 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        margin-bottom: 16px;
+        position: relative;
+      }
+      .cta-band p {
+        color: rgba(255, 255, 255, 0.7);
+        max-width: 520px;
+        margin: 0 auto 30px;
+        position: relative;
+      }
+      .cta-band .hero-cta {
+        position: relative;
+      }
+      .cta-band .btn-ghost {
+        background: transparent;
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+      .cta-band .btn-ghost:hover {
+        border-color: #fff;
+      }
+
+      /* Ratings / social proof band */
+      .ratings-band {
+        background: #fff;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .ratings-band .wrap {
+        display: flex;
+        gap: 48px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+      .rb-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .rb-item .big {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.9rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .rb-item small {
+        color: var(--muted);
+        display: block;
+        font-size: 0.84rem;
+      }
+      .rb-stars {
+        color: var(--accent);
+        letter-spacing: 1px;
+      }
+      .rb-sep {
+        width: 1px;
+        height: 40px;
+        background: var(--line);
+      }
+
+      /* Urgency band */
+      .urgency {
+        background: var(--accent-soft);
+        border: 1px solid #ead9b0;
+        border-radius: 24px;
+        padding: 44px;
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .urgency h3 {
+        font-size: clamp(1.4rem, 3vw, 2rem);
+      }
+      .urgency p {
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
+      /* Button shine */
+      .btn-primary {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-primary::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -120%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.45),
+          transparent
+        );
+        transform: skewX(-20deg);
+        transition: left 0.6s var(--ease);
+      }
+      .btn-primary:hover::after {
+        left: 130%;
+      }
+
+      /* Nav underline */
+      .nav-links a {
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s var(--ease);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Float */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+      .pill {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      /* Team — larger */
+      #equipo .features {
+        gap: 26px;
+      }
+      #equipo .feature {
+        padding: 34px 28px;
+      }
+      #equipo .feature h3 {
+        font-size: 1.35rem;
+        margin-top: 4px;
+      }
+      #equipo .feature p {
+        font-size: 1.02rem;
+      }
+
+      /* Bento (side-by-side blocks) */
+      .bento {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: 215px;
+        gap: 18px;
+      }
+      .bento > * {
+        border-radius: 22px;
+        overflow: hidden;
+        position: relative;
+      }
+      .b-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.35s var(--ease-out),
+          box-shadow 0.35s var(--ease-out);
+      }
+      .b-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 50px rgba(11, 18, 32, 0.1);
+      }
+      .b-accent {
+        background: linear-gradient(150deg, #d4a853, #c99a40);
+        color: #fff;
+        border: 0;
+      }
+      .b-dark {
+        background: var(--ink);
+        color: #fff;
+        border: 0;
+      }
+      .b-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s var(--ease-out);
+      }
+      .b-img:hover img {
+        transform: scale(1.05);
+      }
+      .b-img .cap {
+        position: absolute;
+        left: 22px;
+        bottom: 20px;
+        color: #fff;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+        z-index: 2;
+      }
+      .b-img::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 45%,
+          rgba(0, 0, 0, 0.45)
+        );
+      }
+      .b-img img {
+        position: relative;
+        z-index: 0;
+      }
+      .b-big {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+        font-weight: 700;
+        line-height: 1.1;
+      }
+      .b-card p {
+        color: var(--muted);
+        font-size: 0.97rem;
+      }
+      .b-accent p,
+      .b-dark p {
+        color: rgba(255, 255, 255, 0.78);
+      }
+      .b-eyebrow {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        opacity: 0.7;
+        margin-bottom: 10px;
+      }
+      .col-7 {
+        grid-column: span 7;
+      }
+      .col-5 {
+        grid-column: span 5;
+      }
+      .col-4 {
+        grid-column: span 4;
+      }
+      .col-8 {
+        grid-column: span 8;
+      }
+      .row-2 {
+        grid-row: span 2;
+      }
+
+      /* Reserva form */
+      .reserva-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .reserva-pitch h2 {
+        font-size: clamp(1.9rem, 4vw, 3rem);
+        margin: 14px 0 14px;
+      }
+      /* Animated gradient text */
+      .shine-text {
+        background: linear-gradient(
+          100deg,
+          var(--ink) 30%,
+          var(--accent) 50%,
+          var(--ink) 70%
+        );
+        background-size: 220% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        animation: textshine 5s linear infinite;
+      }
+      @keyframes textshine {
+        to {
+          background-position: 220% 0;
+        }
+      }
+      /* Crossfade pitch text on mode switch */
+      #formTitle,
+      #formSubtitle {
+        transition: opacity 0.2s var(--ease-out), transform 0.28s var(--ease-out),
+          filter 0.2s var(--ease-out);
+      }
+      .pitch-swap #formTitle,
+      .pitch-swap #formSubtitle {
+        opacity: 0;
+        transform: translateY(10px);
+        filter: blur(2px);
+      }
+      .reserva-pitch p {
+        color: var(--muted);
+        font-size: 1.05rem;
+        margin-bottom: 22px;
+      }
+      .wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fff;
+        font-weight: 600;
+        font-size: 14px;
+        transition: border-color 0.25s var(--ease-out),
+          transform 0.18s var(--ease-out);
+      }
+      .wa:hover {
+        border-color: var(--ink);
+        transform: translateY(-2px);
+      }
+      .wa svg {
+        width: 18px;
+        height: 18px;
+        color: #25d366;
+      }
+      .seg {
+        display: inline-flex;
+        padding: 4px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        margin-bottom: 22px;
+      }
+      .seg button {
+        border: 0;
+        background: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--muted);
+        padding: 9px 18px;
+        border-radius: 999px;
+        transition: color 0.2s var(--ease-out), background 0.3s var(--ease-out);
+      }
+      .seg button[aria-pressed="true"] {
+        color: #fff;
+        background: var(--ink);
+      }
+      .form-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 30px;
+        box-shadow: 0 18px 50px rgba(26, 26, 26, 0.06);
+      }
+      .reserva-only {
+        display: contents;
+      }
+      form[data-mode="contacto"] .reserva-only {
+        display: none;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        transition: opacity 0.22s var(--ease-out), transform 0.3s var(--ease-out),
+          filter 0.22s var(--ease-out);
+      }
+      .form-card.swap .form-row {
+        opacity: 0;
+        transform: translateY(12px);
+        filter: blur(2px);
+      }
+      .seg button {
+        position: relative;
+      }
+      .field {
+        margin-bottom: 16px;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+      .field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      .field label .req {
+        color: var(--accent-dark);
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 15px;
+        color: var(--ink);
+        background: #fff;
+        transition: border-color 0.2s var(--ease-out),
+          box-shadow 0.2s var(--ease-out);
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.18);
+      }
+      .field textarea {
+        resize: none;
+      }
+      .form-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 6px;
+        flex-wrap: wrap;
+      }
+      .form-note {
+        font-size: 12px;
+        color: var(--faint);
+        max-width: 220px;
+      }
+      .form-status {
+        margin-top: 14px;
+        font-size: 14px;
+        color: var(--accent-dark);
+        opacity: 0;
+        transition: opacity 0.3s var(--ease-out);
+      }
+      .form-status.show {
+        opacity: 1;
+      }
+
+      /* Footer */
+      footer {
+        padding: 70px 0 36px;
+        border-top: 1px solid var(--line);
+      }
+      .foot-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr;
+        gap: 40px;
+      }
+      .foot-grid h4 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--faint);
+        margin-bottom: 16px;
+      }
+      .foot-grid ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+      .foot-grid a:hover {
+        color: var(--accent-dark);
+      }
+      .foot-bot {
+        margin-top: 50px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: var(--faint);
+        font-size: 0.86rem;
+      }
+
+      /* Reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.6s var(--ease-out),
+          transform 0.7s var(--ease-drawer), filter 0.6s var(--ease-out);
+        filter: blur(0);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+        filter: blur(0);
+      }
+      /* Tetris-style directional assembly */
+      .r-up {
+        transform: translateY(54px);
+      }
+      .r-down {
+        transform: translateY(-54px);
+      }
+      .r-left {
+        transform: translateX(-64px) rotate(-1.5deg);
+      }
+      .r-right {
+        transform: translateX(64px) rotate(1.5deg);
+      }
+      .r-scale {
+        transform: scale(0.9);
+      }
+      .reveal.in.r-up,
+      .reveal.in.r-down,
+      .reveal.in.r-left,
+      .reveal.in.r-right,
+      .reveal.in.r-scale {
+        transform: none;
+      }
+
+      /* Mobile */
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(22px) saturate(180%);
+        -webkit-backdrop-filter: blur(22px) saturate(180%);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        opacity: 0;
+        transform: translateY(-12px) scale(0.98);
+        pointer-events: none;
+        transition: opacity 0.35s var(--ease-out),
+          transform 0.45s var(--ease-drawer);
+      }
+      .mobile-menu.open {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      .mobile-menu a {
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.4s var(--ease-out),
+          transform 0.4s var(--ease-out);
+      }
+      .mobile-menu.open a {
+        opacity: 1;
+        transform: none;
+      }
+      .mobile-menu.open a:nth-of-type(1) {
+        transition-delay: 0.08s;
+      }
+      .mobile-menu.open a:nth-of-type(2) {
+        transition-delay: 0.13s;
+      }
+      .mobile-menu.open a:nth-of-type(3) {
+        transition-delay: 0.18s;
+      }
+      .mobile-menu.open a:nth-of-type(4) {
+        transition-delay: 0.23s;
+      }
+      .mobile-menu.open a:nth-of-type(5) {
+        transition-delay: 0.28s;
+      }
+      .mobile-menu a {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .mm-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .mm-close {
+        background: none;
+        border: 0;
+        font-size: 28px;
+        cursor: pointer;
+        line-height: 1;
+      }
+
+      @media (max-width: 900px) {
+        .steps,
+        .features {
+          grid-template-columns: 1fr;
+        }
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 32px 20px;
+        }
+        .split {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .reserva-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .foot-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .nav-main {
+          gap: 12px;
+          padding: 0 8px;
+        }
+        .burger {
+          display: flex;
+        }
+        header.nav.scrolled .nav-inner {
+          max-width: 1240px;
+        }
+        .bento {
+          grid-template-columns: 1fr !important;
+          grid-auto-rows: auto !important;
+        }
+        .bento > * {
+          grid-column: auto !important;
+          grid-row: auto !important;
+          min-height: 200px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .marquee-track {
+          animation: none;
+        }
+        .pill {
+          animation: none;
+        }
+        .btn-primary::after,
+        .btn-cta::after {
+          display: none;
+        }
+        .btn-primary,
+        .btn-cta {
+          animation: none;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .reveal.r-up,
+        .reveal.r-down,
+        .reveal.r-left,
+        .reveal.r-right,
+        .reveal.r-scale {
+          transform: none;
+        }
+        .mobile-menu,
+        .mobile-menu a {
+          transform: none;
+        }
+        .pill .dot::after {
+          animation: none;
+        }
+        .shine-text {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress" id="progress"></div>
+    <!-- NAV -->
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#top" class="nav-block nav-logo brand">
+          <img src="images/logo.png" alt="Estells" />
+          Estells
+        </a>
+        <div class="nav-block nav-main">
+          <nav class="nav-links">
+            <a href="#proceso">Cómo funciona</a>
+            <a href="#centro">El centro</a>
+            <a href="#equipo">Equipo</a>
+          </nav>
+          <a href="#contacto" class="btn btn-cta">
+            Reserva tu plaza
+            <span class="cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <button class="burger" id="burger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mm-top">
+        <span class="brand"><img src="images/logo.png" alt="" />Estells</span>
+        <button class="mm-close" id="mmClose" aria-label="Cerrar">&times;</button>
+      </div>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#centro">El centro</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto" class="btn btn-primary" style="margin-top:16px;justify-content:center">Reserva tu plaza</a>
+    </div>
+
+    <span id="top"></span>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="pill reveal"><i class="dot"></i>Curso 2026–2027 · Plazas abiertas</span>
+        <h1 class="reveal">
+          Aprende, mejora y <span class="hl">aprueba</span> en un solo lugar
+        </h1>
+        <p class="lead reveal">
+          Refuerzo, técnicas de estudio e idiomas para ESO y Bachillerato.
+          Grupos reducidos y profesores especializados que entienden a cada alumno.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#contacto" class="btn btn-primary">
+            Reserva tu plaza
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#centro" class="btn btn-ghost">Conoce el centro</a>
+        </div>
+        <div class="rating reveal">
+          <span class="stars">★★★★★</span>
+          <span><b>Valoraciones reales</b> de familias en Google</span>
+        </div>
+      </div>
+
+      <!-- Marquee -->
+      <div class="marquee reveal" aria-hidden="true">
+        <div class="marquee-track">
+          <img src="images/team/lara.jpg" alt="" />
+          <img src="images/strip/study-1.jpg" alt="" />
+          <img src="images/team/ricard.jpg" alt="" />
+          <img src="images/strip/study-2.jpg" alt="" />
+          <img src="images/team/virginia.jpg" alt="" />
+          <img src="images/strip/study-3.jpg" alt="" />
+          <img src="images/team/frances-mari.jpg" alt="" />
+          <img src="images/team/salva.jpg" alt="" />
+          <!-- duplicate for seamless loop -->
+          <img src="images/team/lara.jpg" alt="" />
+          <img src="images/strip/study-1.jpg" alt="" />
+          <img src="images/team/ricard.jpg" alt="" />
+          <img src="images/strip/study-2.jpg" alt="" />
+          <img src="images/team/virginia.jpg" alt="" />
+          <img src="images/strip/study-3.jpg" alt="" />
+          <img src="images/team/frances-mari.jpg" alt="" />
+          <img src="images/team/salva.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section soft" id="proceso">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow">Cómo funciona</span>
+          <h2>Empezar es muy sencillo</h2>
+          <p>Tres pasos y a estudiar. Te acompañamos desde el primer día.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal r-left">
+            <div class="step-num">01</div>
+            <h3>Contacta</h3>
+            <p>Escríbenos o llámanos y cuéntanos qué necesita el alumno.</p>
+          </div>
+          <div class="step reveal r-up" style="transition-delay:.1s">
+            <div class="step-num">02</div>
+            <h3>Valoración inicial</h3>
+            <p>Analizamos su nivel y objetivos para proponer el plan adecuado.</p>
+          </div>
+          <div class="step reveal r-right" style="transition-delay:.2s">
+            <div class="step-num">03</div>
+            <h3>Empieza</h3>
+            <p>Reservamos su plaza y comienza con seguimiento desde el primer día.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION / SPLIT -->
+    <section class="section soft" id="centro">
+      <div class="wrap split">
+        <div class="reveal">
+          <span class="eyebrow">Sobre Estells</span>
+          <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);margin:14px 0 18px">
+            Un espacio de confianza, adaptado a cada alumno
+          </h2>
+          <p style="color:var(--muted);font-size:1.05rem">
+            Con método, cercanía y seguimiento continuo ayudamos a cada alumno a
+            avanzar a su ritmo y alcanzar sus metas.
+          </p>
+          <a href="#contacto" class="btn btn-primary" style="margin-top:26px">Reserva tu plaza
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <img class="reveal" src="images/strip/study-2.jpg" alt="Alumno escribiendo y tomando apuntes en Estells" />
+      </div>
+    </section>
+
+    <!-- BENTO (side-by-side blocks) -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="eyebrow">Por qué Estells</span>
+          <h2>Un método que se nota</h2>
+          <p>Atención personalizada, grupos reducidos y seguimiento real, en un mismo lugar.</p>
+        </div>
+        <div class="bento">
+          <div class="b-img col-7 row-2 reveal r-left">
+            <img src="images/strip/study-1.jpg" alt="Material de estudio en Estells" />
+            <span class="cap">Aprende con método y constancia</span>
+          </div>
+          <div class="b-accent b-card col-5 reveal r-down" style="transition-delay:.08s">
+            <span class="b-eyebrow">Atención</span>
+            <div class="b-big">Grupos reducidos,<br>atención de verdad</div>
+            <p>Pocos alumnos por aula para que nadie se quede atrás.</p>
+          </div>
+          <div class="b-card col-5 reveal r-right" style="transition-delay:.16s">
+            <span class="b-eyebrow" style="color:var(--accent-dark)">Seguimiento</span>
+            <div class="b-big" style="color:var(--ink)">Cerca del alumno<br>y de la familia</div>
+            <p>Comunicación constante y planes adaptados a cada uno.</p>
+          </div>
+        </div>
+        <div class="bento" style="margin-top:18px">
+          <div class="b-dark b-card col-4 reveal r-left">
+            <span class="b-eyebrow">Idiomas</span>
+            <div class="b-big">Inglés · Francés · Chino</div>
+            <p>Profesorado especializado y método comunicativo.</p>
+          </div>
+          <div class="b-card col-4 reveal r-up" style="transition-delay:.1s">
+            <span class="b-eyebrow" style="color:var(--accent-dark)">Horario</span>
+            <div class="b-big" style="color:var(--ink)">L–V · 16:00–20:30</div>
+            <p>En el centro de Alginet, de fácil acceso.</p>
+          </div>
+          <div class="b-accent b-card col-4 reveal r-right" style="transition-delay:.2s">
+            <span class="b-eyebrow">Exámenes</span>
+            <div class="b-big">Preparación PAU<br>y recuperaciones</div>
+            <p>Planes específicos para selectividad, finales y septiembre.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section soft" id="equipo">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="eyebrow">Nuestro equipo</span>
+          <h2>Profesores que dejan huella</h2>
+        </div>
+        <div class="features">
+          <div class="feature reveal" style="text-align:center">
+            <img src="images/team/frances-mari.jpg" alt="Francesc Marí" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
+            <h3>Francesc Marí</h3><p>Director · Ciencias y técnicas de estudio</p>
+          </div>
+          <div class="feature reveal" style="text-align:center;transition-delay:.08s">
+            <img src="images/team/virginia.jpg" alt="Virginia" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
+            <h3>Virginia</h3><p>Profesora de Matemáticas</p>
+          </div>
+          <div class="feature reveal" style="text-align:center;transition-delay:.16s">
+            <img src="images/team/ricard.jpg" alt="Ricard" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
+            <h3>Ricard</h3><p>Profesor de Lengua e Idiomas</p>
+          </div>
+          <div class="feature reveal" style="text-align:center">
+            <img src="images/team/lara.jpg" alt="Lara" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
+            <h3>Lara</h3><p>Profesora de Lengua</p>
+          </div>
+          <div class="feature reveal" style="text-align:center;transition-delay:.08s">
+            <img src="images/team/salva.jpg" alt="Salva" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
+            <h3>Salva</h3><p>Profesor de Física</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVA / FORM -->
+    <section class="section soft" id="contacto">
+      <div class="wrap">
+        <div class="reserva-grid">
+          <div class="reserva-pitch reveal r-left" id="reservaPitch">
+            <span class="eyebrow">Contacta o reserva</span>
+            <h2 id="formTitle" class="shine-text">Empieza en Estells</h2>
+            <p id="formSubtitle">Déjanos tus datos y te respondemos en menos de 24 horas. También intensivos de verano y clases especiales.</p>
+            <a class="wa" href="https://wa.me/34600000000" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Escríbenos por WhatsApp
+            </a>
+          </div>
+
+          <div class="reveal r-right">
+            <form class="form-card" id="reservaForm" data-mode="reserva" novalidate>
+              <div class="seg" role="group" aria-label="Tipo de solicitud">
+                <button type="button" data-mode="reserva" aria-pressed="true">Reserva tu plaza</button>
+                <button type="button" data-mode="contacto" aria-pressed="false">Contacta</button>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="f-name">Nombre completo <span class="req">*</span></label>
+                  <input id="f-name" name="name" type="text" required autocomplete="name" />
+                </div>
+                <div class="field">
+                  <label for="f-phone">Teléfono <span class="req">*</span></label>
+                  <input id="f-phone" name="phone" type="tel" required autocomplete="tel" />
+                </div>
+                <div class="field">
+                  <label for="f-email">Email <span class="req">*</span></label>
+                  <input id="f-email" name="email" type="email" required autocomplete="email" />
+                </div>
+                <div class="reserva-only">
+                  <div class="field">
+                    <label for="f-level">Nivel <span class="req">*</span></label>
+                    <select id="f-level" name="level" required>
+                      <option value="" disabled selected>—</option>
+                      <option>Primaria</option>
+                      <option>ESO</option>
+                      <option>Bachillerato</option>
+                      <option>Idiomas</option>
+                      <option>Otro</option>
+                    </select>
+                  </div>
+                  <div class="field full">
+                    <label for="f-subject">Asignatura o idioma</label>
+                    <input id="f-subject" name="subject" type="text" />
+                  </div>
+                </div>
+                <div class="field full">
+                  <label for="f-msg">Mensaje · <span style="text-transform:none;color:var(--faint)">opcional</span></label>
+                  <textarea id="f-msg" name="message" rows="3" placeholder="Cuéntanos qué necesitas"></textarea>
+                </div>
+              </div>
+              <div class="form-foot">
+                <button type="submit" class="btn btn-primary">
+                  <span id="submitLabel">Solicitar reserva</span>
+                  <span class="cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </button>
+                <p class="form-note">Al enviar aceptas que contactemos contigo sobre tu solicitud.</p>
+              </div>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="wrap">
+        <div class="foot-grid">
+          <div>
+            <span class="brand"><img src="images/logo.png" alt="" />Estells</span>
+            <p style="color:var(--muted);margin-top:16px;max-width:340px">
+              Donde el aprendizaje cobra vida. Apoyo educativo cercano y
+              personalizado en Alginet, València.
+            </p>
+          </div>
+          <div>
+            <h4>Centro</h4>
+            <ul>
+              <li><a href="#proceso">Cómo funciona</a></li>
+              <li><a href="#centro">El centro</a></li>
+              <li><a href="#equipo">Equipo</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contacto</h4>
+            <ul>
+              <li><a href="mailto:estellscentre@gmail.com">estellscentre@gmail.com</a></li>
+              <li><a href="tel:+34600000000">+34 600 000 000</a></li>
+              <li><a href="https://www.instagram.com/estellscentre" target="_blank" rel="noopener">@estellscentre</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bot">
+          <span>© 2026 Estells Centre d'Estudis. Todos los derechos reservados.</span>
+          <span>Alginet · València</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Nav scroll state
+      const nav = document.getElementById("nav");
+      const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 12);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      // Mobile menu
+      const mm = document.getElementById("mobileMenu");
+      const open = () => mm.classList.add("open");
+      const close = () => mm.classList.remove("open");
+      document.getElementById("burger").addEventListener("click", open);
+      document.getElementById("mmClose").addEventListener("click", close);
+      mm.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+
+      // Reveal on scroll — re-triggers both directions (persistent assembly)
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            e.target.classList.toggle("in", e.isIntersecting);
+          });
+        },
+        { threshold: 0.18, rootMargin: "-6% 0px -10% 0px" }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      // Scroll progress bar
+      const bar = document.getElementById("progress");
+      const updateBar = () => {
+        const st = window.scrollY;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (max > 0 ? (st / max) * 100 : 0) + "%";
+      };
+      updateBar();
+      window.addEventListener("scroll", updateBar, { passive: true });
+
+      // Reserva / Contacta form: mode toggle + validation + mailto fallback
+      const form = document.getElementById("reservaForm");
+      const status = document.getElementById("formStatus");
+      const levelSel = document.getElementById("f-level");
+      const submitLabel = document.getElementById("submitLabel");
+      const formTitle = document.getElementById("formTitle");
+      const formSubtitle = document.getElementById("formSubtitle");
+
+      const COPY = {
+        reserva: {
+          title: "Empieza en Estells",
+          subtitle:
+            "Déjanos tus datos y te respondemos en menos de 24 horas. También intensivos de verano y clases especiales.",
+          submit: "Solicitar reserva",
+          subject: "Reserva de plaza · Estells",
+        },
+        contacto: {
+          title: "Hablemos",
+          subtitle:
+            "¿Tienes una duda o quieres más información? Escríbenos y te respondemos en menos de 24 horas.",
+          submit: "Enviar mensaje",
+          subject: "Consulta · Estells",
+        },
+      };
+
+      const setMode = (mode) => {
+        form.dataset.mode = mode;
+        levelSel.required = mode === "reserva";
+        submitLabel.textContent = COPY[mode].submit;
+        formTitle.textContent = COPY[mode].title;
+        formSubtitle.textContent = COPY[mode].subtitle;
+        form.querySelectorAll(".seg button").forEach((b) =>
+          b.setAttribute("aria-pressed", b.dataset.mode === mode)
+        );
+        status.classList.remove("show");
+      };
+
+      const pitch = document.getElementById("reservaPitch");
+      const animateMode = (mode) => {
+        if (form.dataset.mode === mode) return;
+        form.classList.add("swap");
+        pitch.classList.add("pitch-swap");
+        window.setTimeout(() => {
+          setMode(mode);
+          form.classList.remove("swap");
+          pitch.classList.remove("pitch-swap");
+        }, 200);
+      };
+      form.querySelectorAll(".seg button").forEach((b) =>
+        b.addEventListener("click", () => animateMode(b.dataset.mode))
+      );
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        const mode = form.dataset.mode;
+        const d = new FormData(form);
+        const lines = [
+          "Nombre: " + d.get("name"),
+          "Teléfono: " + d.get("phone"),
+          "Email: " + d.get("email"),
+        ];
+        if (mode === "reserva") {
+          lines.push(
+            "Nivel: " + d.get("level"),
+            "Asignatura/idioma: " + (d.get("subject") || "—")
+          );
+        }
+        lines.push("Mensaje: " + (d.get("message") || "—"));
+        const href =
+          "mailto:estellscentre@gmail.com?subject=" +
+          encodeURIComponent(COPY[mode].subject) +
+          "&body=" +
+          encodeURIComponent(lines.join("\n"));
+        window.location.href = href;
+        status.textContent =
+          "¡Listo! Abrimos tu correo para enviar " +
+          (mode === "reserva" ? "la solicitud." : "el mensaje.");
+        status.classList.add("show");
+      });
+    </script>
+  </body>
+</html>
