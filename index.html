@@ -788,19 +788,64 @@
         animation: float 4s ease-in-out infinite;
       }
 
-      /* Team — larger */
-      #equipo .features {
-        gap: 26px;
+      /* Team — image-led cards */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
       }
-      #equipo .feature {
-        padding: 34px 28px;
+      .team-card {
+        position: relative;
+        border-radius: 22px;
+        overflow: hidden;
+        aspect-ratio: 4 / 5;
+        background: var(--soft-2);
+        transition: transform 0.35s var(--ease-out),
+          box-shadow 0.35s var(--ease-out);
       }
-      #equipo .feature h3 {
-        font-size: 1.35rem;
-        margin-top: 4px;
+      .team-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 54px rgba(26, 26, 26, 0.16);
       }
-      #equipo .feature p {
-        font-size: 1.02rem;
+      .team-card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s var(--ease-out);
+      }
+      .team-card:hover img {
+        transform: scale(1.05);
+      }
+      .team-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 45%,
+          rgba(0, 0, 0, 0.72)
+        );
+        z-index: 1;
+      }
+      .team-meta {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 22px 24px;
+        z-index: 2;
+        color: #fff;
+      }
+      .team-meta h3 {
+        color: #fff;
+        font-size: 1.4rem;
+        margin-bottom: 2px;
+      }
+      .team-meta p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.98rem;
       }
 
       /* Bento (side-by-side blocks) */
@@ -959,7 +1004,13 @@
         font-size: 1.05rem;
         margin-bottom: 22px;
       }
-      .wa {
+      .social-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .wa,
+      .ig {
         display: inline-flex;
         align-items: center;
         gap: 10px;
@@ -970,9 +1021,10 @@
         font-weight: 600;
         font-size: 14px;
         transition: border-color 0.25s var(--ease-out),
-          transform 0.18s var(--ease-out);
+          transform 0.18s var(--ease-out), box-shadow 0.25s var(--ease-out);
       }
-      .wa:hover {
+      .wa:hover,
+      .ig:hover {
         border-color: var(--ink);
         transform: translateY(-2px);
       }
@@ -980,6 +1032,27 @@
         width: 18px;
         height: 18px;
         color: #25d366;
+      }
+      .ig svg {
+        width: 18px;
+        height: 18px;
+        color: #e1306c;
+      }
+      .ig:hover {
+        border-color: transparent;
+        color: #fff;
+        background: linear-gradient(
+          45deg,
+          #f09433,
+          #e6683c 25%,
+          #dc2743 50%,
+          #cc2366 75%,
+          #bc1888
+        );
+        box-shadow: 0 10px 26px rgba(220, 39, 67, 0.32);
+      }
+      .ig:hover svg {
+        color: #fff;
       }
       .seg {
         display: inline-flex;
@@ -1265,6 +1338,10 @@
         .form-row {
           grid-template-columns: 1fr;
         }
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
         .foot-grid {
           grid-template-columns: 1fr;
           gap: 30px;
@@ -1523,26 +1600,26 @@
           <span class="eyebrow">Nuestro equipo</span>
           <h2>Profesores que dejan huella</h2>
         </div>
-        <div class="features">
-          <div class="feature reveal" style="text-align:center">
-            <img src="images/team/frances-mari.jpg" alt="Francesc Marí" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
-            <h3>Francesc Marí</h3><p>Director · Ciencias y técnicas de estudio</p>
+        <div class="team-grid">
+          <div class="team-card reveal r-up">
+            <img src="images/team/frances-mari.jpg" alt="Francesc Marí, director de Estells" />
+            <div class="team-meta"><h3>Francesc Marí</h3><p>Director · Ciencias y técnicas de estudio</p></div>
           </div>
-          <div class="feature reveal" style="text-align:center;transition-delay:.08s">
-            <img src="images/team/virginia.jpg" alt="Virginia" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
-            <h3>Virginia</h3><p>Profesora de Matemáticas</p>
+          <div class="team-card reveal r-up" style="transition-delay:.08s">
+            <img src="images/team/virginia.jpg" alt="Virginia, profesora de Matemáticas" />
+            <div class="team-meta"><h3>Virginia</h3><p>Profesora de Matemáticas</p></div>
           </div>
-          <div class="feature reveal" style="text-align:center;transition-delay:.16s">
-            <img src="images/team/ricard.jpg" alt="Ricard" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
-            <h3>Ricard</h3><p>Profesor de Lengua e Idiomas</p>
+          <div class="team-card reveal r-up" style="transition-delay:.16s">
+            <img src="images/team/ricard.jpg" alt="Ricard, profesor de Lengua e Idiomas" />
+            <div class="team-meta"><h3>Ricard</h3><p>Profesor de Lengua e Idiomas</p></div>
           </div>
-          <div class="feature reveal" style="text-align:center">
-            <img src="images/team/lara.jpg" alt="Lara" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
-            <h3>Lara</h3><p>Profesora de Lengua</p>
+          <div class="team-card reveal r-up" style="transition-delay:.08s">
+            <img src="images/team/lara.jpg" alt="Lara, profesora de Lengua" />
+            <div class="team-meta"><h3>Lara</h3><p>Profesora de Lengua</p></div>
           </div>
-          <div class="feature reveal" style="text-align:center;transition-delay:.08s">
-            <img src="images/team/salva.jpg" alt="Salva" style="width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 18px;display:block" />
-            <h3>Salva</h3><p>Profesor de Física</p>
+          <div class="team-card reveal r-up" style="transition-delay:.16s">
+            <img src="images/team/salva.jpg" alt="Salva, profesor de Física" />
+            <div class="team-meta"><h3>Salva</h3><p>Profesor de Física</p></div>
           </div>
         </div>
       </div>
@@ -1556,10 +1633,16 @@
             <span class="eyebrow">Contacta o reserva</span>
             <h2 id="formTitle" class="shine-text">Empieza en Estells</h2>
             <p id="formSubtitle">Déjanos tus datos y te respondemos en menos de 24 horas. También intensivos de verano y clases especiales.</p>
-            <a class="wa" href="https://wa.me/34600000000" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-              Escríbenos por WhatsApp
-            </a>
+            <div class="social-row">
+              <a class="wa" href="https://wa.me/34600000000" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                Escríbenos por WhatsApp
+              </a>
+              <a class="ig" href="https://www.instagram.com/estellsce/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+                Síguenos en Instagram
+              </a>
+            </div>
           </div>
 
           <div class="reveal r-right">
@@ -1642,7 +1725,7 @@
             <ul>
               <li><a href="mailto:estellscentre@gmail.com">estellscentre@gmail.com</a></li>
               <li><a href="tel:+34600000000">+34 600 000 000</a></li>
-              <li><a href="https://www.instagram.com/estellscentre" target="_blank" rel="noopener">@estellscentre</a></li>
+              <li><a href="https://www.instagram.com/estellsce/" target="_blank" rel="noopener">@estellsce</a></li>
             </ul>
           </div>
         </div>
