@@ -24,9 +24,9 @@
         --muted: #5c5c5c;
         --faint: #8f8f8f;
         --line: #e4e3df;
-        --accent: #d4a853;
-        --accent-dark: #c99a40;
-        --accent-soft: #f6ecd6;
+        --accent: #F4C20D;
+        --accent-dark: #9a7a0a;
+        --accent-soft: #FBF1CC;
         --radius: 18px;
         --maxw: 1180px;
         --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -115,19 +115,19 @@
         color: #fff;
         background: linear-gradient(
           120deg,
-          #c99a40,
-          #d4a853 45%,
-          #e8c97a 60%,
-          #d4a853 80%,
-          #c99a40
+          #D9A800,
+          #F4C20D 45%,
+          #FCE38A 60%,
+          #F4C20D 80%,
+          #D9A800
         );
         background-size: 220% 100%;
-        box-shadow: 0 8px 24px rgba(212, 168, 83, 0.3);
+        box-shadow: 0 8px 24px rgba(244, 194, 13, 0.3);
         animation: ctaflow 7s linear infinite;
       }
       .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 14px 34px rgba(212, 168, 83, 0.46);
+        box-shadow: 0 14px 34px rgba(244, 194, 13, 0.46);
       }
       .btn-ghost {
         background: #fff;
@@ -154,14 +154,14 @@
         padding: 8px 8px 8px 22px;
         background: linear-gradient(
           120deg,
-          #c99a40,
-          #d4a853 45%,
-          #e8c97a 60%,
-          #d4a853 80%,
-          #c99a40
+          #D9A800,
+          #F4C20D 45%,
+          #FCE38A 60%,
+          #F4C20D 80%,
+          #D9A800
         );
         background-size: 220% 100%;
-        box-shadow: 0 8px 24px rgba(212, 168, 83, 0.34);
+        box-shadow: 0 8px 24px rgba(244, 194, 13, 0.34);
         animation: ctaflow 7s linear infinite;
       }
       @keyframes ctaflow {
@@ -171,7 +171,7 @@
       }
       .btn-cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 14px 36px rgba(212, 168, 83, 0.5);
+        box-shadow: 0 14px 36px rgba(244, 194, 13, 0.5);
       }
       /* Sheen sweep */
       .btn-cta::after {
@@ -220,7 +220,7 @@
         left: 0;
         height: 3px;
         width: 0;
-        background: linear-gradient(90deg, var(--accent-dark), #e8c97a);
+        background: linear-gradient(90deg, var(--accent-dark), #FCE38A);
         z-index: 70;
         transition: width 0.1s linear;
       }
@@ -231,7 +231,7 @@
         inset: 0 0 auto 0;
         z-index: 50;
         padding: 18px 24px;
-        transition: padding 0.45s var(--ease-out);
+        transition: padding 0.7s var(--ease);
       }
       header.nav.scrolled {
         padding-top: 12px;
@@ -243,17 +243,15 @@
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        transition: max-width 0.5s var(--ease-out);
+        transition: max-width 0.8s var(--ease);
       }
       header.nav.scrolled .nav-inner {
-        justify-content: center;
-        gap: 14px;
+        max-width: 960px;
       }
-      /* Converge only on wide screens; below this keep them spread (content needs the room) */
+      /* Converge only on wide screens; below this the content needs the room */
       @media (max-width: 1200px) {
         header.nav.scrolled .nav-inner {
-          justify-content: space-between;
-          gap: 16px;
+          max-width: 1240px;
         }
       }
       .nav-block {
@@ -264,7 +262,7 @@
         border: 1px solid var(--line);
         border-radius: 16px;
         box-shadow: 0 4px 16px rgba(11, 18, 32, 0.06);
-        transition: box-shadow 0.4s var(--ease-out);
+        transition: box-shadow 0.7s var(--ease);
       }
       header.nav.scrolled .nav-block {
         box-shadow: 0 12px 34px rgba(11, 18, 32, 0.13);
@@ -272,22 +270,22 @@
       .nav-logo {
         display: flex;
         align-items: center;
-        gap: 12px;
-        height: 66px;
-        padding: 0 24px;
+        gap: 13px;
+        height: 74px;
+        padding: 0 26px;
       }
       .nav-logo img {
-        width: 48px;
-        height: 48px;
+        width: 60px;
+        height: 60px;
       }
       .nav-logo .brand {
-        font-size: 20px;
+        font-size: 22px;
       }
       .nav-main {
         display: flex;
         align-items: center;
         gap: 26px;
-        height: 66px;
+        height: 74px;
         padding: 0 12px 0 28px;
       }
       .brand {
@@ -377,7 +375,7 @@
         max-width: 120vw;
         background: radial-gradient(
           circle,
-          rgba(212, 168, 83, 0.12),
+          rgba(244, 194, 13, 0.12),
           transparent 62%
         );
         z-index: -1;
@@ -406,7 +404,7 @@
         height: 460px;
         top: -6%;
         left: 12%;
-        background: radial-gradient(circle, rgba(212, 168, 83, 0.5), transparent 70%);
+        background: radial-gradient(circle, rgba(244, 194, 13, 0.5), transparent 70%);
         animation: drift1 16s ease-in-out infinite;
       }
       .hero-fx .b2 {
@@ -748,7 +746,7 @@
         height: 320px;
         background: radial-gradient(
           circle,
-          rgba(212, 168, 83, 0.35),
+          rgba(244, 194, 13, 0.35),
           transparent 60%
         );
       }
@@ -1001,7 +999,7 @@
         box-shadow: 0 22px 50px rgba(11, 18, 32, 0.1);
       }
       .b-accent {
-        background: linear-gradient(150deg, #d4a853, #c99a40);
+        background: linear-gradient(150deg, #F4C20D, #D9A800);
         color: #fff;
         border: 0;
       }
@@ -1283,7 +1281,7 @@
       .field textarea:focus {
         outline: none;
         border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.18);
+        box-shadow: 0 0 0 3px rgba(244, 194, 13, 0.18);
       }
       .field textarea {
         resize: none;
@@ -1438,6 +1436,57 @@
         justify-content: center;
         margin-top: 34px;
         flex-wrap: wrap;
+      }
+
+      /* Pill bold year */
+      .pill b {
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      /* Open-now floating badge */
+      .open-badge {
+        position: fixed;
+        left: 18px;
+        bottom: 18px;
+        z-index: 45;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 10px 16px 10px 13px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(14px) saturate(160%);
+        -webkit-backdrop-filter: blur(14px) saturate(160%);
+        border: 1px solid var(--line);
+        box-shadow: 0 8px 26px rgba(11, 18, 32, 0.14);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--ink);
+        transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+      }
+      .open-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(11, 18, 32, 0.2);
+      }
+      .ob-dot {
+        position: relative;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--faint);
+        flex: none;
+      }
+      .open-badge.is-open .ob-dot {
+        background: #1fab5a;
+      }
+      .open-badge.is-open .ob-dot::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: #1fab5a;
+        animation: ping 1.8s var(--ease-out) infinite;
       }
 
       /* Footer */
@@ -1806,7 +1855,7 @@
         <span class="grid-dots"></span>
       </div>
       <div class="wrap">
-        <span class="pill reveal"><i class="dot"></i><span data-i18n="hero.pill">Curso 2026–2027 · Plazas abiertas</span></span>
+        <span class="pill reveal"><i class="dot"></i><span data-i18n-html="hero.pill"><b>Curso 2026–2027</b> · Plazas abiertas</span></span>
         <h1 class="reveal" data-i18n-html="hero.title">
           Aprende, mejora y <span class="hl">aprueba</span> en un solo lugar
         </h1>
@@ -2095,12 +2144,17 @@
       </div>
     </footer>
 
+    <a class="open-badge" id="openBadge" href="#contacto">
+      <span class="ob-dot"></span>
+      <span id="openLabel">Abierto ahora</span>
+    </a>
+
     <script>
       // ---- i18n (ES / Valencià) ----
       const I18N = {
         es: {
           "nav.proceso": "Cómo funciona", "nav.centro": "El centro", "nav.equipo": "Equipo", "nav.resenas": "Reseñas", "nav.reserva": "Reserva tu plaza",
-          "hero.pill": "Curso 2026–2027 · Plazas abiertas",
+          "hero.pill": "<b>Curso 2026–2027</b> · Plazas abiertas",
           "hero.title": 'Aprende, mejora y <span class="hl">aprueba</span> en un solo lugar',
           "hero.lead": "Refuerzo, técnicas de estudio e idiomas para ESO y Bachillerato. Grupos reducidos y profesores especializados que entienden a cada alumno.",
           "hero.cta1": "Reserva tu plaza", "hero.cta2": "Conoce el centro",
@@ -2131,10 +2185,11 @@
           "form.statusReserva": "¡Listo! Abrimos tu correo para enviar la solicitud.", "form.statusContacto": "¡Listo! Abrimos tu correo para enviar el mensaje.",
           "form.wa": "Escríbenos por WhatsApp", "form.ig": "Síguenos en Instagram",
           "footer.tagline": "Donde el aprendizaje cobra vida. Apoyo educativo cercano y personalizado en Alginet, València.", "footer.col1": "Centro", "footer.contacto": "Contacto", "footer.rights": "© 2026 Estells Centre d'Estudis. Todos los derechos reservados.",
+          "status.open": "Abierto ahora", "status.closed": "Cerrado ahora",
         },
         va: {
           "nav.proceso": "Com funciona", "nav.centro": "El centre", "nav.equipo": "Equip", "nav.resenas": "Ressenyes", "nav.reserva": "Reserva la teua plaça",
-          "hero.pill": "Curs 2026–2027 · Places obertes",
+          "hero.pill": "<b>Curs 2026–2027</b> · Places obertes",
           "hero.title": 'Aprén, millora i <span class="hl">aprova</span> en un sol lloc',
           "hero.lead": "Reforç, tècniques d'estudi i idiomes per a ESO i Batxillerat. Grups reduïts i professorat especialitzat que entén cada alumne.",
           "hero.cta1": "Reserva la teua plaça", "hero.cta2": "Coneix el centre",
@@ -2165,6 +2220,7 @@
           "form.statusReserva": "Fet! Obrim el teu correu per a enviar la sol·licitud.", "form.statusContacto": "Fet! Obrim el teu correu per a enviar el missatge.",
           "form.wa": "Escriu-nos per WhatsApp", "form.ig": "Segueix-nos a Instagram",
           "footer.tagline": "On l'aprenentatge cobra vida. Suport educatiu pròxim i personalitzat a Alginet, València.", "footer.col1": "Centre", "footer.contacto": "Contacte", "footer.rights": "© 2026 Estells Centre d'Estudis. Tots els drets reservats.",
+          "status.open": "Obert ara", "status.closed": "Tancat ara",
         },
       };
       let lang = localStorage.getItem("estells-lang");
@@ -2195,6 +2251,7 @@
         localStorage.setItem("estells-lang", l);
         applyI18n();
         if (window.refreshForm) window.refreshForm();
+        if (window.updateOpen) window.updateOpen();
       }
       document.querySelectorAll(".lang button").forEach((b) =>
         b.addEventListener("click", () => setLang(b.dataset.lang))
@@ -2227,6 +2284,32 @@
         { threshold: [0, 0.2, 0.5] }
       );
       document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      // Open-now badge (Mon–Fri 16:00–20:30 Europe/Madrid). TODO: confirm real schedule.
+      const openBadge = document.getElementById("openBadge");
+      const openLabel = document.getElementById("openLabel");
+      window.updateOpen = function () {
+        const now = new Date();
+        const wd = new Intl.DateTimeFormat("en-US", {
+          timeZone: "Europe/Madrid",
+          weekday: "short",
+        }).format(now);
+        const parts = new Intl.DateTimeFormat("es-ES", {
+          timeZone: "Europe/Madrid",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }).formatToParts(now);
+        const h = parseInt(parts.find((p) => p.type === "hour").value, 10);
+        const m = parseInt(parts.find((p) => p.type === "minute").value, 10);
+        const mins = h * 60 + m;
+        const weekday = ["Mon", "Tue", "Wed", "Thu", "Fri"].includes(wd);
+        const isOpen = weekday && mins >= 960 && mins < 1230;
+        openBadge.classList.toggle("is-open", isOpen);
+        openLabel.textContent = t(isOpen ? "status.open" : "status.closed");
+      };
+      window.updateOpen();
+      setInterval(window.updateOpen, 60000);
 
       // Reviews carousel (placeholder demo reviews — replace with real Google ones)
       const REVIEWS = [
